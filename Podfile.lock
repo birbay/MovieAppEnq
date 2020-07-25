@@ -1,16 +1,24 @@
 PODS:
+  - Macaw (0.9.6):
+    - SWXMLHash
   - SnapKit (5.0.1)
+  - SWXMLHash (5.0.1)
 
 DEPENDENCIES:
+  - Macaw (= 0.9.6)
   - SnapKit (~> 5.0.0)
 
 SPEC REPOS:
   trunk:
+    - Macaw
     - SnapKit
+    - SWXMLHash
 
 SPEC CHECKSUMS:
+  Macaw: 8306d775625ba003beee4186b9533fd7cf284024
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  SWXMLHash: 9cc0c2e4807926c74377724aa8722ee5707a0485
 
-PODFILE CHECKSUM: a46c3606f2e96ddada8d14f83366a4366f5068e0
+PODFILE CHECKSUM: 77d68a0145ead7ff559d036f0972767c2eb71684
 
 COCOAPODS: 1.8.4

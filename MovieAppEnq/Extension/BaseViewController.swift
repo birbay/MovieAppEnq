@@ -13,7 +13,7 @@ class BaseViewController: UIViewController {
     // MARK: - tableView
     lazy var tableView: UITableView = {
         let tv = UITableView()
-        tv.separatorStyle = .none
+        tv.separatorStyle = .singleLine
         tv.keyboardDismissMode = .onDrag
         return tv
     }()

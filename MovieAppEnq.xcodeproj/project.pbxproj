@@ -21,6 +21,7 @@
 		F4B849EC24CCC2B70093AECF /* MoviesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B849EA24CCC2B70093AECF /* MoviesTableViewCell.xib */; };
 		F4B849F424CCC4CD0093AECF /* MovieDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B849F224CCC4CD0093AECF /* MovieDetailVC.swift */; };
 		F4B849F524CCC4CD0093AECF /* MovieDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B849F324CCC4CD0093AECF /* MovieDetailVC.xib */; };
+		F4B849FC24CCCBE80093AECF /* favorite.svg in Resources */ = {isa = PBXBuildFile; fileRef = F4B849FB24CCCBE80093AECF /* favorite.svg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		F4B849EA24CCC2B70093AECF /* MoviesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoviesTableViewCell.xib; sourceTree = "<group>"; };
 		F4B849F224CCC4CD0093AECF /* MovieDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailVC.swift; sourceTree = "<group>"; };
 		F4B849F324CCC4CD0093AECF /* MovieDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDetailVC.xib; sourceTree = "<group>"; };
+		F4B849FB24CCCBE80093AECF /* favorite.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = favorite.svg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 		F4B849C924CCBB360093AECF /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				F4B849FA24CCCBCD0093AECF /* SVGs */,
 				F4B849BA24CCB9DD0093AECF /* Assets.xcassets */,
 			);
 			path = Assets;
@@ -241,6 +244,14 @@
 			path = TableViewCell;
 			sourceTree = "<group>";
 		};
+		F4B849FA24CCCBCD0093AECF /* SVGs */ = {
+			isa = PBXGroup;
+			children = (
+				F4B849FB24CCCBE80093AECF /* favorite.svg */,
+			);
+			path = SVGs;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -304,6 +315,7 @@
 			files = (
 				F4B849F524CCC4CD0093AECF /* MovieDetailVC.xib in Resources */,
 				F4B849BE24CCB9DD0093AECF /* LaunchScreen.storyboard in Resources */,
+				F4B849FC24CCCBE80093AECF /* favorite.svg in Resources */,
 				F4B849EC24CCC2B70093AECF /* MoviesTableViewCell.xib in Resources */,
 				F4B849E524CCC13F0093AECF /* Localizable.strings in Resources */,
 				F4B849CF24CCBC160093AECF /* MoviesVC.xib in Resources */,
