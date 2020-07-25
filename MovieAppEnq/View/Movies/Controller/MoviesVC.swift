@@ -19,13 +19,13 @@ class MoviesVC: BaseViewController, UISearchBarDelegate {
         return search
     }
     
-    
     let cellIdentifier: String = "MoviesTableViewCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = Strings.movies.localize()
+        
         setSearchController()
         setTableView()
     }
@@ -39,6 +39,8 @@ class MoviesVC: BaseViewController, UISearchBarDelegate {
 }
 
 extension MoviesVC: UITableViewDelegate, UITableViewDataSource {
+    
+    // MARK: - add tableView from BaseViewController
     
     func setTableView() {
         view.addSubview(tableView)
@@ -64,5 +66,10 @@ extension MoviesVC: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let nextVC = MovieDetailVC()
+        navigationController?.pushViewController(nextVC, animated: true)
+    }
 }
 

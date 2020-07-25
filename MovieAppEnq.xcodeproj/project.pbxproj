@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,6 +19,8 @@
 		F4B849E524CCC13F0093AECF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4B849E724CCC13F0093AECF /* Localizable.strings */; };
 		F4B849EB24CCC2B70093AECF /* MoviesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B849E924CCC2B70093AECF /* MoviesTableViewCell.swift */; };
 		F4B849EC24CCC2B70093AECF /* MoviesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B849EA24CCC2B70093AECF /* MoviesTableViewCell.xib */; };
+		F4B849F424CCC4CD0093AECF /* MovieDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B849F224CCC4CD0093AECF /* MovieDetailVC.swift */; };
+		F4B849F524CCC4CD0093AECF /* MovieDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B849F324CCC4CD0093AECF /* MovieDetailVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		F4B849E824CCC1760093AECF /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F4B849E924CCC2B70093AECF /* MoviesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesTableViewCell.swift; sourceTree = "<group>"; };
 		F4B849EA24CCC2B70093AECF /* MoviesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoviesTableViewCell.xib; sourceTree = "<group>"; };
+		F4B849F224CCC4CD0093AECF /* MovieDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailVC.swift; sourceTree = "<group>"; };
+		F4B849F324CCC4CD0093AECF /* MovieDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDetailVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +63,6 @@
 				7B37C5FA605AAB11DEEDDFFB /* Pods-MovieAppEnq.debug.xcconfig */,
 				21AF143FFFAED597141FCD78 /* Pods-MovieAppEnq.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -117,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				F4B849CB24CCBBF40093AECF /* Movies */,
+				F4B849EF24CCC4970093AECF /* MovieDetail */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -196,6 +200,47 @@
 			path = TableViewCell;
 			sourceTree = "<group>";
 		};
+		F4B849EF24CCC4970093AECF /* MovieDetail */ = {
+			isa = PBXGroup;
+			children = (
+				F4B849F024CCC4A00093AECF /* Controller */,
+				F4B849F124CCC4AE0093AECF /* View */,
+			);
+			path = MovieDetail;
+			sourceTree = "<group>";
+		};
+		F4B849F024CCC4A00093AECF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F4B849F224CCC4CD0093AECF /* MovieDetailVC.swift */,
+				F4B849F624CCC4D20093AECF /* TableViewCell */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F4B849F124CCC4AE0093AECF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F4B849F324CCC4CD0093AECF /* MovieDetailVC.xib */,
+				F4B849F724CCC4DB0093AECF /* TableViewCell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F4B849F624CCC4D20093AECF /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		F4B849F724CCC4DB0093AECF /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -257,6 +302,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4B849F524CCC4CD0093AECF /* MovieDetailVC.xib in Resources */,
 				F4B849BE24CCB9DD0093AECF /* LaunchScreen.storyboard in Resources */,
 				F4B849EC24CCC2B70093AECF /* MoviesTableViewCell.xib in Resources */,
 				F4B849E524CCC13F0093AECF /* Localizable.strings in Resources */,
@@ -314,6 +360,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4B849F424CCC4CD0093AECF /* MovieDetailVC.swift in Sources */,
 				F4B849EB24CCC2B70093AECF /* MoviesTableViewCell.swift in Sources */,
 				F4B849D324CCBCA50093AECF /* BaseViewController.swift in Sources */,
 				F4B849E024CCC0870093AECF /* Localizable+String.swift in Sources */,
