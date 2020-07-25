@@ -10,6 +10,14 @@ import UIKit
 
 class BaseViewController: UIViewController {
 
+    // MARK: - tableView
+    lazy var tableView: UITableView = {
+        let tv = UITableView()
+        tv.separatorStyle = .none
+        tv.keyboardDismissMode = .onDrag
+        return tv
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -7,4 +7,6 @@ target 'MovieAppEnq' do
 
   # Pods for MovieAppEnq
 
+  pod 'SnapKit', '~> 5.0.0'
+
 end
