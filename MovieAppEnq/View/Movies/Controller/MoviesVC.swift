@@ -30,6 +30,14 @@ class MoviesVC: BaseViewController, UISearchBarDelegate {
         setTableView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // MARK: - to bring navBar back if transparentNavBar run
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: ""), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage(named: "")
+    }
+    
     func setSearchController() {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = true

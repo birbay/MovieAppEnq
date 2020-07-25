@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="SimilarCollectionViewCell" customModule="MovieAppEnq" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="100" height="128"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="100" height="128"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QmV-4a-hFM">
+                        <rect key="frame" x="0.0" y="0.0" width="100" height="128"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aj3-EQ-B78">
+                                <rect key="frame" x="10" y="92" width="80" height="12"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="10"/>
+                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12.12.20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AjY-mE-8PR">
+                                <rect key="frame" x="10" y="108" width="80" height="12"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
+                                <color key="textColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="interstellar" translatesAutoresizingMaskIntoConstraints="NO" id="trx-A0-0Jn">
+                                <rect key="frame" x="10" y="8" width="80" height="80"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="trx-A0-0Jn" secondAttribute="height" multiplier="1:1" id="tMi-qM-gCa"/>
+                                    <constraint firstAttribute="height" constant="80" id="wpp-Ve-Nc6"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="AjY-mE-8PR" firstAttribute="leading" secondItem="Aj3-EQ-B78" secondAttribute="leading" id="2OK-2N-BiS"/>
+                            <constraint firstAttribute="trailing" secondItem="trx-A0-0Jn" secondAttribute="trailing" constant="10" id="2jq-2p-lKG"/>
+                            <constraint firstItem="trx-A0-0Jn" firstAttribute="top" secondItem="QmV-4a-hFM" secondAttribute="top" constant="8" id="9uI-oh-Ppa"/>
+                            <constraint firstItem="Aj3-EQ-B78" firstAttribute="leading" secondItem="trx-A0-0Jn" secondAttribute="leading" id="BLd-ux-YSs"/>
+                            <constraint firstItem="AjY-mE-8PR" firstAttribute="top" secondItem="Aj3-EQ-B78" secondAttribute="bottom" constant="4" id="U7g-M6-QOB"/>
+                            <constraint firstItem="Aj3-EQ-B78" firstAttribute="top" secondItem="trx-A0-0Jn" secondAttribute="bottom" constant="4" id="Z5g-UF-SLg"/>
+                            <constraint firstAttribute="bottom" secondItem="AjY-mE-8PR" secondAttribute="bottom" constant="8" id="aNG-29-ZsU"/>
+                            <constraint firstItem="trx-A0-0Jn" firstAttribute="leading" secondItem="QmV-4a-hFM" secondAttribute="leading" constant="10" id="i8V-fG-ZIT"/>
+                            <constraint firstItem="Aj3-EQ-B78" firstAttribute="trailing" secondItem="trx-A0-0Jn" secondAttribute="trailing" id="jz2-l0-E1U"/>
+                            <constraint firstItem="trx-A0-0Jn" firstAttribute="width" secondItem="trx-A0-0Jn" secondAttribute="height" multiplier="1:1" id="x0C-FF-5Zw"/>
+                            <constraint firstItem="AjY-mE-8PR" firstAttribute="trailing" secondItem="Aj3-EQ-B78" secondAttribute="trailing" id="x6T-UR-p6s"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="QmV-4a-hFM" secondAttribute="bottom" id="PQH-Uk-EcT"/>
+                <constraint firstItem="QmV-4a-hFM" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="inS-dn-aiO"/>
+                <constraint firstItem="QmV-4a-hFM" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="o6z-vH-CMq"/>
+                <constraint firstAttribute="trailing" secondItem="QmV-4a-hFM" secondAttribute="trailing" id="zih-eL-AaS"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="backView" destination="QmV-4a-hFM" id="Lqa-qH-meQ"/>
+                <outlet property="dateLabel" destination="AjY-mE-8PR" id="TJH-qL-Xuq"/>
+                <outlet property="img" destination="trx-A0-0Jn" id="5VA-yj-a6d"/>
+                <outlet property="titleLabel" destination="Aj3-EQ-B78" id="jiM-tB-JQT"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="139"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="interstellar" width="214" height="320"/>
+    </resources>
+</document>

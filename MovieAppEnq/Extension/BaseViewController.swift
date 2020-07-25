@@ -9,7 +9,7 @@
 import UIKit
 
 class BaseViewController: UIViewController {
-
+    
     // MARK: - tableView
     lazy var tableView: UITableView = {
         let tv = UITableView()
@@ -20,9 +20,14 @@ class BaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
-
+    func transparentNavBar(){
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
+    }
 }

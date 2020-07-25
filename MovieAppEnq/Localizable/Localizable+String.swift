@@ -11,8 +11,9 @@ import UIKit
 public enum Strings: String {
     
     // MARK: String enums
-    case movies                         = "movies"
     case search                         = "search"
+    case movies                         = "movies"
+    case similarMovies                  = "similarMovies"
     case warning                        = "warning"
     case error                          = "error"
     
