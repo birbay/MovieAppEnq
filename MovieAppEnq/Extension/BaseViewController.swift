@@ -10,12 +10,27 @@ import UIKit
 
 class BaseViewController: UIViewController {
     
+    // MARK: - refreshControl
+    lazy var refreshControl: UIRefreshControl? = {
+        let control = UIRefreshControl()
+        control.addTarget(self, action: #selector(refreshHandle), for: UIControl.Event.valueChanged)
+        return control
+    }()
+    
     // MARK: - tableView
     lazy var tableView: UITableView = {
         let tv = UITableView()
         tv.separatorStyle = .singleLine
         tv.keyboardDismissMode = .onDrag
         return tv
+    }()
+    
+    // MARK: - setLoading
+    lazy var loadingIndicatorView: UIActivityIndicatorView = {
+        let indicatorView = UIActivityIndicatorView(style: .medium)
+        indicatorView.color = UIColor.label
+        indicatorView.hidesWhenStopped = true
+        return indicatorView
     }()
     
     override func viewDidLoad() {
@@ -30,4 +45,32 @@ class BaseViewController: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
     }
+    
+    // MARK: - showAlert
+    
+    func showActionAlert(message: String) -> Void {
+        let Alert = UIAlertController(title: Strings.error.localize(), message: message, preferredStyle: UIAlertController.Style.alert)
+        
+        Alert.addAction(UIAlertAction(title: Strings.ok.localize(), style: .default, handler: { (action: UIAlertAction!) in
+    //            self.delegate?.okAction(controller: vc)
+        }))
+        
+        self.present(Alert, animated: true, completion: nil)
+    }
+    
+    // MARK: - refreshHandle
+    
+    @objc func refreshHandle(){
+        
+    }
+    
+    // MARK: - setLoadingIndicator
+    
+    func setLoadingIndicatorToBarButton() {
+        let barButton = UIBarButtonItem(customView: loadingIndicatorView)
+        loadingIndicatorView.startAnimating()
+        self.navigationItem.setRightBarButton(barButton, animated: true)
+    }
+    
+    
 }

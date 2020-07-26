@@ -16,6 +16,10 @@ public enum Strings: String {
     case similarMovies                  = "similarMovies"
     case warning                        = "warning"
     case error                          = "error"
+    case parse_error                    = "parse_error"
+    case ok                             = "ok"
+    case internet_connection            = "internet_connection"
+    case emptyTableView                 = "emptyTableView"
     
     func localize() -> String {
         return NSLocalizedString(self.rawValue, comment:"")

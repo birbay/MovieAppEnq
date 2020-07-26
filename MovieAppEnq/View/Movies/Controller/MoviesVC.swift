@@ -19,6 +19,12 @@ class MoviesVC: BaseViewController, UISearchBarDelegate {
         return search
     }
     
+    lazy var viewModel: MovieViewModel = {
+        let vm = MovieViewModel.shared
+        vm.delegate = self
+        return vm
+    }()
+    
     let cellIdentifier: String = "MoviesTableViewCell"
     
     override func viewDidLoad() {
@@ -28,6 +34,8 @@ class MoviesVC: BaseViewController, UISearchBarDelegate {
         
         setSearchController()
         setTableView()
+        setLoadingIndicatorToBarButton()
+        viewModel.getMovies()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,12 +46,39 @@ class MoviesVC: BaseViewController, UISearchBarDelegate {
         self.navigationController?.navigationBar.shadowImage = UIImage(named: "")
     }
     
+    @objc override func refreshHandle(){
+        loadingIndicatorView.startAnimating()
+        if navigationItem.searchController?.searchBar.text == "" {
+            viewModel.refreshHandle()
+        } else {
+            if let query = navigationItem.searchController?.searchBar.text {
+                viewModel.getSearchMovie(searchText: query)
+            }
+        }
+    }
+    
+
+    // MARK: - SearchController
+    
     func setSearchController() {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = true
         definesPresentationContext = true
     }
 
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.isLoading = true
+        tableView.reloadData()
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(getSearchMovie(_:)), object: searchBar)
+        perform(#selector(getSearchMovie(_:)), with: searchBar, afterDelay: 0.5)
+    }
+    
+    @objc func getSearchMovie(_ searchBar: UISearchBar) {
+        if let query = searchBar.text {
+            query != "" ? viewModel.getSearchMovie(searchText: query) : viewModel.getMovies()
+        }
+    }
+    
 }
 
 extension MoviesVC: UITableViewDelegate, UITableViewDataSource {
@@ -52,6 +87,9 @@ extension MoviesVC: UITableViewDelegate, UITableViewDataSource {
     
     func setTableView() {
         view.addSubview(tableView)
+        tableView.addSubview(refreshControl!)
+        
+        refreshControl?.addTarget(self, action: #selector(refreshHandle), for: UIControl.Event.valueChanged)
         
         tableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
         tableView.delegate = self
@@ -65,15 +103,32 @@ extension MoviesVC: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        if viewModel.movies.count > 0 {
+            tableView.restore()
+            return viewModel.movies.count
+        } else {
+            if !viewModel.isLoading {
+                tableView.setEmptyView(title: Strings.error.localize(), message: Strings.emptyTableView.localize(), svgName: "movie")
+            } else {
+                tableView.restore()
+            }
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! MoviesTableViewCell
+        
+        if !viewModel.movies.isEmpty {
+            let data = viewModel.movies[indexPath.row]
+            cell.configureCell(movie: data)
 
-        cell.selectionStyle = .none
-        cell.accessoryType = .disclosureIndicator
-        return cell
+            cell.selectionStyle = .none
+            cell.accessoryType = .disclosureIndicator
+            return cell
+        }
+        
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -81,5 +136,24 @@ extension MoviesVC: UITableViewDelegate, UITableViewDataSource {
         let nextVC = MovieDetailVC()
         navigationController?.pushViewController(nextVC, animated: true)
     }
+}
+
+extension MoviesVC: MovieModelDelegate {
+    
+    func MoviesCompleted() {
+        viewModel.isLoading = false
+        self.refreshControl?.endRefreshing()
+        self.loadingIndicatorView.stopAnimating()
+        self.tableView.reloadData()
+    }
+    
+    func movieError(err: ApplicationError) {
+        viewModel.isLoading = false
+        self.refreshControl?.endRefreshing()
+        self.loadingIndicatorView.stopAnimating()
+        self.showActionAlert(message: err.description)
+        self.tableView.reloadData()
+    }
+    
 }
 

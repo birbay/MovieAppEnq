@@ -9,5 +9,8 @@ target 'MovieAppEnq' do
 
   pod 'SnapKit', '~> 5.0.0'
   pod 'Macaw', '0.9.6'
+  pod 'Alamofire', '~> 5.2'
+  pod 'Kingfisher', '~> 5.13'
+  pod 'PromiseKit', '~> 6.8'
 
 end
