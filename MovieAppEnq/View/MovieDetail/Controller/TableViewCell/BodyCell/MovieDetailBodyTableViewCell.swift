@@ -7,19 +7,23 @@
 //
 
 import UIKit
-
+import Macaw
 class MovieDetailBodyTableViewCell: UITableViewCell {
     
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descLabel: UILabel!
+    @IBOutlet weak var voteImage: SVGView!
     @IBOutlet weak var voteAverageLabel: UILabel!
+    @IBOutlet weak var imdbImage: SVGView!
     
     var imdbCallBack: (() -> ())?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        voteImage.backgroundColor = .clear
+        imdbImage.backgroundColor = .clear
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

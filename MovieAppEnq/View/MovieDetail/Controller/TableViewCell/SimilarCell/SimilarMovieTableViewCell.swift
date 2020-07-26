@@ -16,13 +16,15 @@ class SimilarMovieTableViewCell: UITableViewCell {
     
     let cellIdentifier: String = "SimilarCollectionViewCell"
     
+    var viewModel = SimilarMoviesViewModel()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         titleLabel.text = Strings.similarMovies.localize()
         setCollectionView()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
@@ -48,16 +50,14 @@ extension SimilarMovieTableViewCell: UICollectionViewDataSource, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        return viewModel.movies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! SimilarCollectionViewCell
-        
+        cell.configureCell(movie: viewModel.movies[indexPath.row])
         return cell
     }
     
     
 }
-
-

@@ -9,8 +9,8 @@
 import Foundation
 
 protocol MovieModelDelegate {
-    func MoviesCompleted()
-    func movieError(err: ApplicationError)
+    func moviesCompleted()
+    func moviesError(err: ApplicationError)
 }
 
 class MovieViewModel {
@@ -35,9 +35,9 @@ class MovieViewModel {
         ServiceManager.load(resource)
             .done { data -> Void in
                 self.movies = data as! [Movie]
-                self.delegate?.MoviesCompleted()
+                self.delegate?.moviesCompleted()
             }.catch { error in
-                self.delegate?.movieError(err: error as! ApplicationError)
+                self.delegate?.moviesError(err: error as! ApplicationError)
         }
     }
     
@@ -47,9 +47,9 @@ class MovieViewModel {
         ServiceManager.load(resource)
             .done { data -> Void in
             self.movies = data as! [Movie]
-                self.delegate?.MoviesCompleted()
+                self.delegate?.moviesCompleted()
             }.catch { error in
-                self.delegate?.movieError(err: error as! ApplicationError)
+                self.delegate?.moviesError(err: error as! ApplicationError)
         }
     }
 }

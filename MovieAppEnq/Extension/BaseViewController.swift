@@ -72,5 +72,11 @@ class BaseViewController: UIViewController {
         self.navigationItem.setRightBarButton(barButton, animated: true)
     }
     
-    
+    // MARK: - when scroll navbar transparent progress
+    func setNavbar(backgroundColorAlpha alpha: CGFloat) {
+        let newColor = UIColor(red: 1, green: 1, blue: 1, alpha: alpha) //your color
+        self.navigationController?.navigationBar.backgroundColor = newColor
+        UIApplication.shared.statusBarUIView?.backgroundColor = newColor
+    }
+
 }

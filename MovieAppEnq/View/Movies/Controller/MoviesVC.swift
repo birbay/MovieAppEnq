@@ -143,15 +143,14 @@ extension MoviesVC: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension MoviesVC: MovieModelDelegate {
-    
-    func MoviesCompleted() {
+    func moviesCompleted() {
         viewModel.isLoading = false
         self.refreshControl?.endRefreshing()
         self.loadingIndicatorView.stopAnimating()
         self.tableView.reloadData()
     }
     
-    func movieError(err: ApplicationError) {
+    func moviesError(err: ApplicationError) {
         viewModel.isLoading = false
         self.refreshControl?.endRefreshing()
         self.loadingIndicatorView.stopAnimating()

@@ -20,7 +20,6 @@
                         <rect key="frame" x="0.0" y="5" width="320" height="50"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="CzT-Xg-fwI"/>
                             <constraint firstAttribute="height" constant="50" id="FcN-cP-cSK"/>
                         </constraints>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SKM-oE-Cwg">

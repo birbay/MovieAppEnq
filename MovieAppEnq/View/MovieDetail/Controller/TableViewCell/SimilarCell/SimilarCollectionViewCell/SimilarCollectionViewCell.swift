@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class SimilarCollectionViewCell: UICollectionViewCell {
     
@@ -19,4 +20,19 @@ class SimilarCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
 
+    func configureCell(movie: Movie){
+        
+        titleLabel.text = movie.title
+        dateLabel.text = movie.release_date
+        
+        if let image = movie.poster_path {
+            if let url = URL(string: ServiceManager.imageRoot + image) {
+                img.kf.setImage(with: url)
+            }
+        } else {
+            img.image = nil
+        }
+    }
+    
+    
 }

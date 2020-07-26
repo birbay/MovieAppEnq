@@ -21,6 +21,9 @@ class DetailMovieViewModel {
     
     var isLoading: Bool = true
     
+    var sectionCount: Int {
+        return 3 // body, genres, similar
+    }
     
     func getMovie() {
         if let id = movie.id {

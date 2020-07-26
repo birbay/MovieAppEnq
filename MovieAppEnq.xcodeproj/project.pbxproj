@@ -48,6 +48,7 @@
 		F4B84A4324CD69350093AECF /* Genres.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B84A4224CD69350093AECF /* Genres.swift */; };
 		F4B84A4524CD722A0093AECF /* no_movie.svg in Resources */ = {isa = PBXBuildFile; fileRef = F4B84A4424CD722A0093AECF /* no_movie.svg */; };
 		F4B84A4924CD77E40093AECF /* GenresViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B84A4824CD77E40093AECF /* GenresViewModel.swift */; };
+		F4B84A4B24CD7C940093AECF /* SimilarMoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B84A4A24CD7C940093AECF /* SimilarMoviesViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +98,7 @@
 		F4B84A4224CD69350093AECF /* Genres.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genres.swift; sourceTree = "<group>"; };
 		F4B84A4424CD722A0093AECF /* no_movie.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = no_movie.svg; sourceTree = "<group>"; };
 		F4B84A4824CD77E40093AECF /* GenresViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresViewModel.swift; sourceTree = "<group>"; };
+		F4B84A4A24CD7C940093AECF /* SimilarMoviesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarMoviesViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -430,6 +432,7 @@
 			children = (
 				F4B84A3E24CD69010093AECF /* DetailMovieViewModel.swift */,
 				F4B84A4824CD77E40093AECF /* GenresViewModel.swift */,
+				F4B84A4A24CD7C940093AECF /* SimilarMoviesViewModel.swift */,
 			);
 			path = DetailMovieViewModel;
 			sourceTree = "<group>";
@@ -576,6 +579,7 @@
 				F4B84A1624CCDA690093AECF /* UIView+Extension.swift in Sources */,
 				F4B849CE24CCBC160093AECF /* MoviesVC.swift in Sources */,
 				F4B84A0124CCD15C0093AECF /* MovieDetailBodyTableViewCell.swift in Sources */,
+				F4B84A4B24CD7C940093AECF /* SimilarMoviesViewModel.swift in Sources */,
 				F4B84A3724CCFFF80093AECF /* UITableView+Extension.swift in Sources */,
 				F4B84A4124CD690C0093AECF /* MovieDetail.swift in Sources */,
 				F4B84A2624CCEC670093AECF /* NetworkResult.swift in Sources */,
@@ -738,6 +742,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9C84E8QM54;
 				INFOPLIST_FILE = MovieAppEnq/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -757,6 +762,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9C84E8QM54;
 				INFOPLIST_FILE = MovieAppEnq/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
