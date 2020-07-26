@@ -43,4 +43,30 @@ class ServiceManager {
         
         return promise
     }
+    
+    class func loadDetail(_ resource: Resource) -> Promise<Any>  {
+        let (promise, resolver) = Promise<Any>.pending()
+        if Connectivity.isConnectedToInternet() {
+            AF.request(resource.url, method: HTTPMethod(rawValue: resource.method), encoding: JSONEncoding.default)
+                .responseJSON { response in
+                if let data = response.data {
+                    do {
+                        let items = try JSONDecoder().decode(MovieDetail.self, from: data)
+                        resolver.fulfill(items)
+                    } catch {
+                        resolver.reject(ApplicationError.placesCouldNotBeParsed)
+                    }
+                } else {
+                    if let err = response.error {
+                        resolver.reject(err)
+                    }
+                }
+            }
+        } else {
+            resolver.reject(ApplicationError.internetError)
+        }
+        
+        return promise
+    }
+    
 }

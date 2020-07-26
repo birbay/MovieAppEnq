@@ -9,13 +9,13 @@
 import UIKit
 
 class MovieDetailVC: BaseViewController {
-
+    
     lazy var coverImageView: UIImageView = {
         let image = UIImageView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: imageCoverHeight))
         image.backgroundColor = .clear
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
-        image.backgroundColor = UIColor.systemGray2
+        image.backgroundColor = UIColor.clear
         return image
     }()
     
@@ -24,38 +24,53 @@ class MovieDetailVC: BaseViewController {
             (self.navigationController?.navigationBar.frame.height ?? 0.0)
     }
     
-    let imageCoverHeight: CGFloat = UIScreen.main.bounds.height / 4
+    var imageCoverHeight: CGFloat = UIScreen.main.bounds.height / 4
     let cellIdentifierBody: String = "MovieDetailBodyTableViewCell"
     let cellIdentifierGenres: String = "GenresTableViewCell"
     let cellIdentifierSimilar: String = "SimilarMovieTableViewCell"
     
+    lazy var viewModel: DetailMovieViewModel = {
+        let vm = DetailMovieViewModel.shared
+        vm.delegate = self
+        return vm
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         transparentNavBar()
         setTableView()
-        fillData()
         addCoverImageView()
+        viewModel.getMovie()
     }
     
     func fillData() {
         
         // MARK: - FillImageCover
+        if let image = self.viewModel.movie.backdrop_path {
+            if let url = URL(string: ServiceManager.imageRoot + image) {
+                self.coverImageView.kf.setImage(with: url)
+            }
+            coverImageView.addBorder(side: .bottom, color: .black, width: 2)
+        } else {
+//            self.imageCoverHeight = 0
+//            self.coverImageView.layoutIfNeeded()
+            self.coverImageView.image = nil
+            self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
+        }
         
-        self.coverImageView.image = UIImage(named: "interstellar")
-        
+        self.tableView.reloadData()
     }
-
+    
     func addCoverImageView() {
-
+        
         // MARK: - addImageCover
-        coverImageView.addBorder(side: .bottom, color: .black, width: 2)
         view.addSubview(coverImageView)
         
     }
     
-        // MARK: - ScrollView
-        
+    // MARK: - ScrollView
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let y = imageCoverHeight - (scrollView.contentOffset.y + imageCoverHeight )
 //        let h = max(topbarHeight - 20, y)
@@ -105,17 +120,38 @@ extension MovieDetailVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierBody, for: indexPath) as! MovieDetailBodyTableViewCell
+            cell.configureCell(movie: viewModel.movie)
+            cell.imdbCallBack = {
+                if let imdbID = self.viewModel.movie.imdb_id {
+                    // MARK: - zzz make vebview
+                    if let url = URL(string: "https://www.imdb.com/title/\(String(describing: imdbID))") {
+                        UIApplication.shared.open(url, options: [:])
+                    }
+                }
+            }
             return cell
         } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierGenres, for: indexPath) as! GenresTableViewCell
-            
+            if !self.viewModel.movie.genres.isEmpty {
+                cell.viewModel.genres = viewModel.movie.genres
+            }
             cell.genresCollectionView.reloadData()
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierSimilar, for: indexPath) as! SimilarMovieTableViewCell
-           return cell
-       }
+            return cell
+        }
     }
     
 }
 
+extension MovieDetailVC: DetailMovieModelDelegate {
+    func movieCompleted() {
+        fillData()
+    }
+    
+    func movieError(err: ApplicationError) {
+        
+    }
+    
+}

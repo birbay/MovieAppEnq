@@ -18,7 +18,6 @@ class AllMovie: Codable {
 class Movie: Codable {
     var popularity: Double?
     var vote_count: Int?
-    var video: Bool?
     var poster_path: String?
     var id: Int?
     var adult: Bool?
@@ -29,6 +28,5 @@ class Movie: Codable {
     var vote_average: Double?
     var overview: String?
     var release_date: String?
-    var genre_ids: [Int]?
 }
 

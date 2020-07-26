@@ -13,6 +13,7 @@ public enum Strings: String {
     // MARK: String enums
     case search                         = "search"
     case movies                         = "movies"
+    case upcomingMovies                 = "upcomingMovies"
     case similarMovies                  = "similarMovies"
     case warning                        = "warning"
     case error                          = "error"

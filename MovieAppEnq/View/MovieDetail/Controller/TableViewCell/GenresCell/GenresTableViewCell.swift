@@ -14,6 +14,8 @@ class GenresTableViewCell: UITableViewCell {
     
     let cellIdentifier = "TypeCollectionViewCell"
     
+    var viewModel = GenresMovieViewModel()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         setCollectionView()
@@ -41,13 +43,13 @@ extension GenresTableViewCell: UICollectionViewDataSource, UICollectionViewDeleg
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 15
+        return viewModel.genres.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! TypeCollectionViewCell
+        cell.titleLabel.text = viewModel.genres[indexPath.row].name
         return cell
     }
-    
     
 }

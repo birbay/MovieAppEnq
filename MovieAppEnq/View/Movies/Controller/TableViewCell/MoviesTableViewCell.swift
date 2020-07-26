@@ -41,11 +41,9 @@ class MoviesTableViewCell: UITableViewCell {
         
         titleLabel.text = movie.original_title
         detailLabel.text = movie.overview
-        dateLabel.text = movie.release_date
+        let date = movie.release_date?.toDate(withFormat: "yyyy-MM-dd")
+        dateLabel.text = date?.toString(withFormat: "d MMMM yyyy")
         ratingLabel.text = String(describing: movie.vote_average ?? 0)
-        
-        
-        
     }
     
 }

@@ -30,7 +30,7 @@ class MoviesVC: BaseViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = Strings.movies.localize()
+        title = Strings.upcomingMovies.localize()
         
         setSearchController()
         setTableView()
@@ -108,7 +108,7 @@ extension MoviesVC: UITableViewDelegate, UITableViewDataSource {
             return viewModel.movies.count
         } else {
             if !viewModel.isLoading {
-                tableView.setEmptyView(title: Strings.error.localize(), message: Strings.emptyTableView.localize(), svgName: "movie")
+                tableView.setEmptyView(title: Strings.error.localize(), message: Strings.emptyTableView.localize(), svgName: "no_movie")
             } else {
                 tableView.restore()
             }
@@ -134,6 +134,10 @@ extension MoviesVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let nextVC = MovieDetailVC()
+        let data = viewModel.movies[indexPath.row]
+        if let id = data.id {
+            nextVC.viewModel.movie.id = id
+        }
         navigationController?.pushViewController(nextVC, animated: true)
     }
 }
