@@ -8,6 +8,7 @@
 
 import UIKit
 import Macaw
+
 class MovieDetailBodyTableViewCell: UITableViewCell {
     
     @IBOutlet weak var imgView: UIImageView!

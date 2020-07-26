@@ -8,9 +8,11 @@
 
 import UIKit
 import SnapKit
+import SkeletonView
+import QuartzCore
 
 class MoviesVC: BaseViewController, UISearchBarDelegate {
-
+    
     var searchController: UISearchController {
         let search = UISearchController(searchResultsController: nil)
         search.searchBar.placeholder = Strings.search.localize()
@@ -34,7 +36,6 @@ class MoviesVC: BaseViewController, UISearchBarDelegate {
         
         setSearchController()
         setTableView()
-        setLoadingIndicatorToBarButton()
         viewModel.getMovies()
     }
     
@@ -47,7 +48,8 @@ class MoviesVC: BaseViewController, UISearchBarDelegate {
     }
     
     @objc override func refreshHandle(){
-        loadingIndicatorView.startAnimating()
+        viewModel.isLoading = true
+        self.tableView.reloadData()
         if navigationItem.searchController?.searchBar.text == "" {
             viewModel.refreshHandle()
         } else {
@@ -112,33 +114,34 @@ extension MoviesVC: UITableViewDelegate, UITableViewDataSource {
             } else {
                 tableView.restore()
             }
-            return 0
+            return 10
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! MoviesTableViewCell
-        
+        viewModel.isLoading ? cell.showAnimatedGradientSkeleton() : cell.hideSkeleton()
         if !viewModel.movies.isEmpty {
             let data = viewModel.movies[indexPath.row]
             cell.configureCell(movie: data)
 
             cell.selectionStyle = .none
             cell.accessoryType = .disclosureIndicator
-            return cell
         }
         
-        return UITableViewCell()
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let nextVC = MovieDetailVC()
-        let data = viewModel.movies[indexPath.row]
-        if let id = data.id {
-            nextVC.viewModel.movie.id = id
+        if viewModel.isLoading == false {
+            let nextVC = MovieDetailVC()
+            let data = viewModel.movies[indexPath.row]
+            if let id = data.id {
+                nextVC.viewModel.movie.id = id
+            }
+            navigationController?.pushViewController(nextVC, animated: true)
         }
-        navigationController?.pushViewController(nextVC, animated: true)
     }
 }
 
@@ -146,17 +149,20 @@ extension MoviesVC: MovieModelDelegate {
     func moviesCompleted() {
         viewModel.isLoading = false
         self.refreshControl?.endRefreshing()
-        self.loadingIndicatorView.stopAnimating()
         self.tableView.reloadData()
     }
     
-    func moviesError(err: ApplicationError) {
+    func moviesError(err: Error) {
         viewModel.isLoading = false
         self.refreshControl?.endRefreshing()
-        self.loadingIndicatorView.stopAnimating()
-        self.showActionAlert(message: err.description)
+        self.showActionAlert(message: err.localizedDescription)
         self.tableView.reloadData()
     }
     
 }
 
+extension MoviesVC: SkeletonTableViewDataSource {
+    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        return "MoviesTableViewCell"
+    }
+}

@@ -7,12 +7,12 @@
 //
 
 import UIKit
+import SkeletonView
 
 class SimilarMovieTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var similarCollectionView: UICollectionView!
-    @IBOutlet weak var SimilarCollectionViewHeight: NSLayoutConstraint!
     
     let cellIdentifier: String = "SimilarCollectionViewCell"
     
@@ -52,12 +52,19 @@ extension SimilarMovieTableViewCell: UICollectionViewDataSource, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.movies.count
+        if viewModel.movies.count > 0 {
+            return viewModel.movies.count
+        } else {
+            return 10
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! SimilarCollectionViewCell
-        cell.configureCell(movie: viewModel.movies[indexPath.row])
+        self.viewModel.isLoading ? cell.showAnimatedGradientSkeleton() : cell.hideSkeleton()
+        if !viewModel.movies.isEmpty {
+            cell.configureCell(movie: viewModel.movies[indexPath.row])
+        }
         return cell
     }
     

@@ -12,5 +12,6 @@ target 'MovieAppEnq' do
   pod 'Alamofire', '~> 5.2'
   pod 'Kingfisher', '~> 5.13'
   pod 'PromiseKit', '~> 6.8'
-
+  pod 'SkeletonView'
+  pod 'lottie-ios'
 end

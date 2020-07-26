@@ -7,6 +7,7 @@
 //
 
 import UIKit
+//import Lottie
 
 class BaseViewController: UIViewController {
     
@@ -21,6 +22,7 @@ class BaseViewController: UIViewController {
     lazy var tableView: UITableView = {
         let tv = UITableView()
         tv.separatorStyle = .singleLine
+        tv.clipsToBounds = true
         tv.keyboardDismissMode = .onDrag
         return tv
     }()
@@ -34,13 +36,25 @@ class BaseViewController: UIViewController {
         return indicatorView
     }()
     
+    // MARK: - lottieView
+//    var animationView: AnimationView?
+    
+//    lazy var animationView: AnimationView = {
+//        let view = AnimationView.init(name: "loading-dots-blue-on-white")
+//        view.frame = view.bounds
+//        view.contentMode = .scaleAspectFit
+//        view.loopMode = .loop
+//        view.animationSpeed = 1.5
+//        return view
+//    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
     }
     
-    func transparentNavBar(){
+    func transparentNavBar() {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
@@ -66,12 +80,17 @@ class BaseViewController: UIViewController {
     }
     
     // MARK: - setLoadingIndicator
-    
     func setLoadingIndicatorToBarButton() {
         let barButton = UIBarButtonItem(customView: loadingIndicatorView)
         loadingIndicatorView.startAnimating()
         self.navigationItem.setRightBarButton(barButton, animated: true)
     }
+    
+//    // MARK: - lottie
+//    func setLoading(){
+//        animationView.play()
+//        view.addSubview(animationView)
+//    }
     
     // MARK: - when scroll navbar transparent progress
     func setNavbar(backgroundColorAlpha alpha: CGFloat) {

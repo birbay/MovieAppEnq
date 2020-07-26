@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 class GenresTableViewCell: UITableViewCell {
 
@@ -20,7 +21,7 @@ class GenresTableViewCell: UITableViewCell {
         super.awakeFromNib()
         setCollectionView()
     }
-    
+     
 }
 
 extension GenresTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -43,12 +44,19 @@ extension GenresTableViewCell: UICollectionViewDataSource, UICollectionViewDeleg
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.genres.count
+        if viewModel.genres.count > 0 {
+            return viewModel.genres.count
+        } else {
+            return 10
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! TypeCollectionViewCell
-        cell.titleLabel.text = viewModel.genres[indexPath.row].name
+        self.viewModel.isLoading ? cell.showAnimatedGradientSkeleton() : cell.hideSkeleton()
+        if !viewModel.genres.isEmpty {
+            cell.titleLabel.text = viewModel.genres[indexPath.row].name
+        }
         return cell
     }
     

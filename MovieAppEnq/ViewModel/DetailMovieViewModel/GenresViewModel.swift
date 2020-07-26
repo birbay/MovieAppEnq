@@ -10,4 +10,6 @@ import Foundation
 
 class GenresMovieViewModel {
     var genres = [Genres]()
+    
+    var isLoading: Bool = true
 }

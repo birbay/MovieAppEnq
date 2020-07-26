@@ -43,7 +43,10 @@ class MoviesTableViewCell: UITableViewCell {
         detailLabel.text = movie.overview
         let date = movie.release_date?.toDate(withFormat: "yyyy-MM-dd")
         dateLabel.text = date?.toString(withFormat: "d MMMM yyyy")
-        ratingLabel.text = String(describing: movie.vote_average ?? 0)
+        if let vote = movie.vote_average {
+            ratingLabel.text = String(describing: vote)
+            voteView.fileName = "favorite"
+        }
     }
     
 }

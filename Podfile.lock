@@ -3,6 +3,7 @@ PODS:
   - Kingfisher (5.14.0):
     - Kingfisher/Core (= 5.14.0)
   - Kingfisher/Core (5.14.0)
+  - lottie-ios (3.1.8)
   - Macaw (0.9.6):
     - SWXMLHash
   - PromiseKit (6.13.1):
@@ -14,33 +15,40 @@ PODS:
     - PromiseKit/CorePromise
   - PromiseKit/UIKit (6.13.1):
     - PromiseKit/CorePromise
+  - SkeletonView (1.8.7)
   - SnapKit (5.0.1)
   - SWXMLHash (5.0.1)
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
   - Kingfisher (~> 5.13)
+  - lottie-ios
   - Macaw (= 0.9.6)
   - PromiseKit (~> 6.8)
+  - SkeletonView
   - SnapKit (~> 5.0.0)
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - Kingfisher
+    - lottie-ios
     - Macaw
     - PromiseKit
+    - SkeletonView
     - SnapKit
     - SWXMLHash
 
 SPEC CHECKSUMS:
   Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
   Kingfisher: 7b64389a43139c903ec434788344c288217c792d
+  lottie-ios: 48fac6be217c76937e36e340e2d09cf7b10b7f5f
   Macaw: 8306d775625ba003beee4186b9533fd7cf284024
   PromiseKit: 28fda91c973cc377875d8c0ea4f973013c05b6db
+  SkeletonView: ba5370f41280b2f0a76918bb143c1294232bb4f4
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SWXMLHash: 9cc0c2e4807926c74377724aa8722ee5707a0485
 
-PODFILE CHECKSUM: ae7ea36aea535414b3557e379b13370c79118c5a
+PODFILE CHECKSUM: 01ef0f169116b972fd137de8063d97f30f2c64a6
 
 COCOAPODS: 1.8.4

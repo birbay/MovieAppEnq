@@ -51,6 +51,8 @@
 		F4B84A4B24CD7C940093AECF /* SimilarMoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B84A4A24CD7C940093AECF /* SimilarMoviesViewModel.swift */; };
 		F4B84A4F24CD90840093AECF /* IMDBWebViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B84A4D24CD90840093AECF /* IMDBWebViewVC.swift */; };
 		F4B84A5024CD90840093AECF /* IMDBWebViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B84A4E24CD90840093AECF /* IMDBWebViewVC.xib */; };
+		F4B84A5424CE12F90093AECF /* loading-dots-blue-on-white.json in Resources */ = {isa = PBXBuildFile; fileRef = F4B84A5224CE12F90093AECF /* loading-dots-blue-on-white.json */; };
+		F4B84A5524CE12F90093AECF /* loading-dots-in-yellow.json in Resources */ = {isa = PBXBuildFile; fileRef = F4B84A5324CE12F90093AECF /* loading-dots-in-yellow.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +105,8 @@
 		F4B84A4A24CD7C940093AECF /* SimilarMoviesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarMoviesViewModel.swift; sourceTree = "<group>"; };
 		F4B84A4D24CD90840093AECF /* IMDBWebViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMDBWebViewVC.swift; sourceTree = "<group>"; };
 		F4B84A4E24CD90840093AECF /* IMDBWebViewVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IMDBWebViewVC.xib; sourceTree = "<group>"; };
+		F4B84A5224CE12F90093AECF /* loading-dots-blue-on-white.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "loading-dots-blue-on-white.json"; sourceTree = "<group>"; };
+		F4B84A5324CE12F90093AECF /* loading-dots-in-yellow.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "loading-dots-in-yellow.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +221,7 @@
 		F4B849C924CCBB360093AECF /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				F4B84A5124CE12EC0093AECF /* Lottie */,
 				F4B849FA24CCCBCD0093AECF /* SVGs */,
 				F4B849BA24CCB9DD0093AECF /* Assets.xcassets */,
 			);
@@ -451,6 +456,15 @@
 			path = IMDBWebView;
 			sourceTree = "<group>";
 		};
+		F4B84A5124CE12EC0093AECF /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				F4B84A5224CE12F90093AECF /* loading-dots-blue-on-white.json */,
+				F4B84A5324CE12F90093AECF /* loading-dots-in-yellow.json */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -520,7 +534,9 @@
 				F4B849FC24CCCBE80093AECF /* favorite.svg in Resources */,
 				F4B84A1024CCD4730093AECF /* TypeCollectionViewCell.xib in Resources */,
 				F4B849EC24CCC2B70093AECF /* MoviesTableViewCell.xib in Resources */,
+				F4B84A5524CE12F90093AECF /* loading-dots-in-yellow.json in Resources */,
 				F4B84A5024CD90840093AECF /* IMDBWebViewVC.xib in Resources */,
+				F4B84A5424CE12F90093AECF /* loading-dots-blue-on-white.json in Resources */,
 				F4B849E524CCC13F0093AECF /* Localizable.strings in Resources */,
 				F4B84A0A24CCD4120093AECF /* GenresTableViewCell.xib in Resources */,
 				F4B849CF24CCBC160093AECF /* MoviesVC.xib in Resources */,

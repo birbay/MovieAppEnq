@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 class MovieDetailVC: BaseViewController {
     
@@ -15,10 +16,26 @@ class MovieDetailVC: BaseViewController {
         image.backgroundColor = .clear
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
+        image.isSkeletonable = true
+        image.showAnimatedGradientSkeleton()
         image.backgroundColor = UIColor.clear
         return image
     }()
     
+    var headerView: UIView = {
+        let size: CGFloat = 25
+        let width = UIScreen.main.bounds.width
+        var containerView = UIView(frame: CGRect(x: 0, y: 0, width: size, height: size))
+        containerView.clipsToBounds = false
+        containerView.backgroundColor = .clear
+        
+        let viewTop = UIView(frame: CGRect(x: 0, y: -size, width: width, height: size*2))
+        viewTop.backgroundColor = .systemBackground
+        viewTop.layer.cornerRadius = size
+        containerView.addSubview(viewTop)
+        return containerView
+    }()
+
     var topbarHeight: CGFloat {
         return (view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0.0) +
             (self.navigationController?.navigationBar.frame.height ?? 0.0)
@@ -46,6 +63,7 @@ class MovieDetailVC: BaseViewController {
         
         setTableView()
         addCoverImageView()
+//        setLoading()
         getData()
     }
     
@@ -64,12 +82,16 @@ class MovieDetailVC: BaseViewController {
     }
     
     func getData(){
+        viewModel.isLoading = true
+        similarViewModel.isLoading = true
+        
         viewModel.getMovie()
         
         if let id = viewModel.movie.id {
             similarViewModel.id = id
         }
         similarViewModel.getSimilarMovies()
+        self.tableView.reloadData()
     }
     
     func fillData() {
@@ -86,6 +108,7 @@ class MovieDetailVC: BaseViewController {
             self.coverImageView.image = nil
             self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
         }
+        coverImageView.hideSkeleton()
         
         self.tableView.reloadData()
     }
@@ -94,6 +117,7 @@ class MovieDetailVC: BaseViewController {
         
         // MARK: - addImageCover
         view.addSubview(coverImageView)
+        view.bringSubviewToFront(tableView)
     }
     
     // MARK: - ScrollView
@@ -121,9 +145,11 @@ extension MovieDetailVC: UITableViewDelegate, UITableViewDataSource {
     func setTableView() {
         view.addSubview(tableView)
         
-        loadingIndicatorView.center = CGPoint(x: UIScreen.main.bounds.width / 2, y: 50)
-        tableView.addSubview(loadingIndicatorView)
+        tableView.tableHeaderView = headerView
+        headerView.layer.zPosition = -1
+        tableView.tableHeaderView?.frame.size = CGSize(width: tableView.frame.width, height: CGFloat(0.0))
         
+        tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
         tableView.contentInset = UIEdgeInsets(top: imageCoverHeight + topbarHeight, left: 0, bottom: 30, right: 0)
@@ -141,6 +167,9 @@ extension MovieDetailVC: UITableViewDelegate, UITableViewDataSource {
             make.edges.equalToSuperview()
         }
     }
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 20.0
+//    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 1 {
@@ -163,17 +192,10 @@ extension MovieDetailVC: UITableViewDelegate, UITableViewDataSource {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 1 {
-            return 0.001
-        } else {
-            return UITableView.automaticDimension
-        }
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierBody, for: indexPath) as! MovieDetailBodyTableViewCell
+            self.viewModel.isLoading ? cell.showAnimatedGradientSkeleton() : cell.hideSkeleton()
             cell.configureCell(movie: viewModel.movie)
             cell.imdbCallBack = {
                 if let imdbID = self.viewModel.movie.imdb_id {
@@ -185,14 +207,18 @@ extension MovieDetailVC: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierGenres, for: indexPath) as! GenresTableViewCell
+            self.viewModel.isLoading ? cell.showAnimatedGradientSkeleton() : cell.hideSkeleton()
             if !self.viewModel.movie.genres.isEmpty {
+                cell.viewModel.isLoading = false
                 cell.viewModel.genres = viewModel.movie.genres
+                cell.genresCollectionView.reloadData()
             }
-            cell.genresCollectionView.reloadData()
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierSimilar, for: indexPath) as! SimilarMovieTableViewCell
+            self.similarViewModel.isLoading ? cell.showAnimatedGradientSkeleton() : cell.hideSkeleton()
             if !self.similarViewModel.movies.isEmpty {
+                cell.viewModel.isLoading = similarViewModel.isLoading
                 cell.viewModel.movies = self.similarViewModel.movies
                 cell.goSimilarMovieCallBack = { index in
                     let data = self.similarViewModel.movies[index]
@@ -202,21 +228,9 @@ extension MovieDetailVC: UITableViewDelegate, UITableViewDataSource {
                     }
                     self.navigationController?.pushViewController(nextVC, animated: true)
                 }
-                cell.similarCollectionView.reloadData()
-                return cell
-            } else {
-                let cell = UITableViewCell()
-                if similarViewModel.isLoading == true {
-                    let activityIndicator = UIActivityIndicatorView(style: .medium)
-                    activityIndicator.color = UIColor.label
-                    activityIndicator.startAnimating()
-                    activityIndicator.hidesWhenStopped = true
-                    activityIndicator.center = CGPoint(x: UIScreen.main.bounds.width / 2, y: 50)
-                    cell.addSubview(activityIndicator)
-                }
-                return cell
             }
-            
+            cell.similarCollectionView.reloadData()
+            return cell
         }
     }
     
@@ -233,7 +247,7 @@ extension MovieDetailVC: DetailMovieModelDelegate, SimilarMoviesModelDelegate {
     }
     
     func movieCompleted() {
-        loadingIndicatorView.stopAnimating()
+        viewModel.isLoading = false
         fillData()
     }
     
@@ -244,3 +258,8 @@ extension MovieDetailVC: DetailMovieModelDelegate, SimilarMoviesModelDelegate {
 }
 
 
+extension MovieDetailVC: SkeletonTableViewDataSource {
+    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        return "GenresTableViewCell"
+    }
+}
