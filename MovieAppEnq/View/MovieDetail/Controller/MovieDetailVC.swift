@@ -44,10 +44,15 @@ class MovieDetailVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        transparentNavBar()
         setTableView()
         addCoverImageView()
         getData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        transparentNavBar()
     }
     
     func getData(){
@@ -163,9 +168,14 @@ extension MovieDetailVC: UITableViewDelegate, UITableViewDataSource {
             cell.imdbCallBack = {
                 if let imdbID = self.viewModel.movie.imdb_id {
                     // MARK: - zzz make vebview
-                    if let url = URL(string: "https://www.imdb.com/title/\(String(describing: imdbID))") {
-                        UIApplication.shared.open(url, options: [:])
-                    }
+//                    if let url = URL(string: "https://www.imdb.com/title/\(String(describing: imdbID))") {
+//                        UIApplication.shared.open(url, options: [:])
+//                    }
+                    
+                    let nextVC = IMDBWebViewVC()
+                    nextVC.imdbID = imdbID
+                    self.navigationController?.pushViewController(nextVC, animated: true)
+                    
                 }
             }
             return cell

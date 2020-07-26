@@ -49,6 +49,8 @@
 		F4B84A4524CD722A0093AECF /* no_movie.svg in Resources */ = {isa = PBXBuildFile; fileRef = F4B84A4424CD722A0093AECF /* no_movie.svg */; };
 		F4B84A4924CD77E40093AECF /* GenresViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B84A4824CD77E40093AECF /* GenresViewModel.swift */; };
 		F4B84A4B24CD7C940093AECF /* SimilarMoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B84A4A24CD7C940093AECF /* SimilarMoviesViewModel.swift */; };
+		F4B84A4F24CD90840093AECF /* IMDBWebViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B84A4D24CD90840093AECF /* IMDBWebViewVC.swift */; };
+		F4B84A5024CD90840093AECF /* IMDBWebViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B84A4E24CD90840093AECF /* IMDBWebViewVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +101,8 @@
 		F4B84A4424CD722A0093AECF /* no_movie.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = no_movie.svg; sourceTree = "<group>"; };
 		F4B84A4824CD77E40093AECF /* GenresViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresViewModel.swift; sourceTree = "<group>"; };
 		F4B84A4A24CD7C940093AECF /* SimilarMoviesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarMoviesViewModel.swift; sourceTree = "<group>"; };
+		F4B84A4D24CD90840093AECF /* IMDBWebViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMDBWebViewVC.swift; sourceTree = "<group>"; };
+		F4B84A4E24CD90840093AECF /* IMDBWebViewVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IMDBWebViewVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +187,7 @@
 			children = (
 				F4B849CB24CCBBF40093AECF /* Movies */,
 				F4B849EF24CCC4970093AECF /* MovieDetail */,
+				F4B84A4C24CD90600093AECF /* IMDBWebView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -437,6 +442,15 @@
 			path = DetailMovieViewModel;
 			sourceTree = "<group>";
 		};
+		F4B84A4C24CD90600093AECF /* IMDBWebView */ = {
+			isa = PBXGroup;
+			children = (
+				F4B84A4D24CD90840093AECF /* IMDBWebViewVC.swift */,
+				F4B84A4E24CD90840093AECF /* IMDBWebViewVC.xib */,
+			);
+			path = IMDBWebView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -506,6 +520,7 @@
 				F4B849FC24CCCBE80093AECF /* favorite.svg in Resources */,
 				F4B84A1024CCD4730093AECF /* TypeCollectionViewCell.xib in Resources */,
 				F4B849EC24CCC2B70093AECF /* MoviesTableViewCell.xib in Resources */,
+				F4B84A5024CD90840093AECF /* IMDBWebViewVC.xib in Resources */,
 				F4B849E524CCC13F0093AECF /* Localizable.strings in Resources */,
 				F4B84A0A24CCD4120093AECF /* GenresTableViewCell.xib in Resources */,
 				F4B849CF24CCBC160093AECF /* MoviesVC.xib in Resources */,
@@ -588,6 +603,7 @@
 				F4B84A1224CCD7B50093AECF /* Movie.swift in Sources */,
 				F4B84A1B24CCDD9F0093AECF /* SimilarMovieTableViewCell.swift in Sources */,
 				F4B84A2824CCED020093AECF /* MovieViewModel.swift in Sources */,
+				F4B84A4F24CD90840093AECF /* IMDBWebViewVC.swift in Sources */,
 				F4B849B424CCB9DC0093AECF /* SceneDelegate.swift in Sources */,
 				F4B84A4924CD77E40093AECF /* GenresViewModel.swift in Sources */,
 				F4B84A3124CCEDDB0093AECF /* ServiceManager.swift in Sources */,

@@ -74,9 +74,17 @@ class BaseViewController: UIViewController {
     
     // MARK: - when scroll navbar transparent progress
     func setNavbar(backgroundColorAlpha alpha: CGFloat) {
-        let newColor = UIColor(red: 1, green: 1, blue: 1, alpha: alpha) //your color
+        let newColor = universalWhite(alpha: alpha) //your color
         self.navigationController?.navigationBar.backgroundColor = newColor
         UIApplication.shared.statusBarUIView?.backgroundColor = newColor
     }
 
+    func universalWhite(alpha: CGFloat) -> UIColor {
+        if self.traitCollection.userInterfaceStyle == .dark {
+            return UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: alpha)
+        } else {
+            return UIColor(red: 1, green: 1, blue: 1, alpha: alpha)
+        }
+    }
+    
 }
