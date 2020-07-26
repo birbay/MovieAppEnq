@@ -16,15 +16,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="428" height="553"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sed ut perspiciatis unde omnis iste " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Af-i1-eKx">
-                        <rect key="frame" x="130" y="30" width="278" height="69.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Af-i1-eKx">
+                        <rect key="frame" x="130" y="30" width="278" height="0.0"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="29"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="interstellar2" translatesAutoresizingMaskIntoConstraints="NO" id="eQH-h8-aTr">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eQH-h8-aTr">
                         <rect key="frame" x="20" y="25" width="90" height="130"/>
-                        <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="90" id="7kE-da-y5n"/>
                             <constraint firstAttribute="height" constant="130" id="mfc-7S-oAF"/>
@@ -35,15 +34,14 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="749" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0sy-q1-A6t">
-                        <rect key="frame" x="130" y="169.5" width="278" height="357.5"/>
-                        <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</string>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="749" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0sy-q1-A6t">
+                        <rect key="frame" x="130" y="100" width="278" height="427"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                         <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nqT-4T-1IT">
-                        <rect key="frame" x="130" y="119.5" width="258" height="30"/>
+                        <rect key="frame" x="130" y="50" width="258" height="30"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="GHn-6s-HSs">
                                 <rect key="frame" x="0.0" y="0.0" width="188" height="30"/>
@@ -55,11 +53,8 @@
                                             <constraint firstAttribute="height" constant="30" id="Qfw-hl-c4h"/>
                                             <constraint firstAttribute="width" secondItem="eXn-Jb-SvE" secondAttribute="height" id="yQI-Ke-pXk"/>
                                         </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="fileName" value="favorite"/>
-                                        </userDefinedRuntimeAttributes>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7.4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sOw-FZ-cfA">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sOw-FZ-cfA">
                                         <rect key="frame" x="46" y="0.0" width="142" height="30"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                         <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -74,14 +69,11 @@
                                     <constraint firstAttribute="height" constant="30" id="32U-h5-2du"/>
                                     <constraint firstAttribute="width" secondItem="I0J-UW-p2N" secondAttribute="height" multiplier="2:1" id="4xW-QD-RWa"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="fileName" value="imdb"/>
-                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                     </stackView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sj3-V1-PIr">
-                        <rect key="frame" x="328" y="119.5" width="60" height="30"/>
+                        <rect key="frame" x="328" y="50" width="60" height="30"/>
                         <connections>
                             <action selector="goIMDBPage:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="PPt-zl-gas"/>
                         </connections>
@@ -119,7 +111,4 @@
             <point key="canvasLocation" x="215.94202898550725" y="309.04017857142856"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="interstellar2" width="2897" height="4134"/>
-    </resources>
 </document>

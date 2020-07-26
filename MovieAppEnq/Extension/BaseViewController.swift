@@ -29,6 +29,7 @@ class BaseViewController: UIViewController {
     lazy var loadingIndicatorView: UIActivityIndicatorView = {
         let indicatorView = UIActivityIndicatorView(style: .medium)
         indicatorView.color = UIColor.label
+        indicatorView.startAnimating()
         indicatorView.hidesWhenStopped = true
         return indicatorView
     }()
@@ -83,7 +84,7 @@ class BaseViewController: UIViewController {
         if self.traitCollection.userInterfaceStyle == .dark {
             return UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: alpha)
         } else {
-            return UIColor(red: 1, green: 1, blue: 1, alpha: alpha)
+            return UIColor(red: 0.969, green: 0.969, blue: 0.969, alpha: alpha)
         }
     }
     

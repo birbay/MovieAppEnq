@@ -24,7 +24,7 @@ class MovieDetailVC: BaseViewController {
             (self.navigationController?.navigationBar.frame.height ?? 0.0)
     }
     
-    var imageCoverHeight: CGFloat = UIScreen.main.bounds.height / 4
+    var imageCoverHeight: CGFloat = 0 // UIScreen.main.bounds.height / 4
     let cellIdentifierBody: String = "MovieDetailBodyTableViewCell"
     let cellIdentifierGenres: String = "GenresTableViewCell"
     let cellIdentifierSimilar: String = "SimilarMovieTableViewCell"
@@ -55,6 +55,14 @@ class MovieDetailVC: BaseViewController {
         transparentNavBar()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let md = MovieDetail()
+        viewModel.movie = md
+        similarViewModel.movies.removeAll()
+    }
+    
     func getData(){
         viewModel.getMovie()
         
@@ -71,10 +79,10 @@ class MovieDetailVC: BaseViewController {
             if let url = URL(string: ServiceManager.imageRoot + image) {
                 self.coverImageView.kf.setImage(with: url)
             }
-            coverImageView.addBorder(side: .bottom, color: .black, width: 2)
+            self.coverImageView.addBorder(side: .bottom, color: .black, width: 2)
+            self.imageCoverHeight = UIScreen.main.bounds.height / 4
+            self.tableView.contentInset = UIEdgeInsets(top: imageCoverHeight + topbarHeight, left: 0, bottom: 30, right: 0)
         } else {
-            //            self.imageCoverHeight = 0
-            //            self.coverImageView.layoutIfNeeded()
             self.coverImageView.image = nil
             self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
         }
@@ -86,7 +94,6 @@ class MovieDetailVC: BaseViewController {
         
         // MARK: - addImageCover
         view.addSubview(coverImageView)
-        
     }
     
     // MARK: - ScrollView
@@ -113,6 +120,9 @@ extension MovieDetailVC: UITableViewDelegate, UITableViewDataSource {
     
     func setTableView() {
         view.addSubview(tableView)
+        
+        loadingIndicatorView.center = CGPoint(x: UIScreen.main.bounds.width / 2, y: 50)
+        tableView.addSubview(loadingIndicatorView)
         
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
@@ -167,15 +177,9 @@ extension MovieDetailVC: UITableViewDelegate, UITableViewDataSource {
             cell.configureCell(movie: viewModel.movie)
             cell.imdbCallBack = {
                 if let imdbID = self.viewModel.movie.imdb_id {
-                    // MARK: - zzz make vebview
-//                    if let url = URL(string: "https://www.imdb.com/title/\(String(describing: imdbID))") {
-//                        UIApplication.shared.open(url, options: [:])
-//                    }
-                    
                     let nextVC = IMDBWebViewVC()
                     nextVC.imdbID = imdbID
                     self.navigationController?.pushViewController(nextVC, animated: true)
-                    
                 }
             }
             return cell
@@ -190,9 +194,29 @@ extension MovieDetailVC: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifierSimilar, for: indexPath) as! SimilarMovieTableViewCell
             if !self.similarViewModel.movies.isEmpty {
                 cell.viewModel.movies = self.similarViewModel.movies
+                cell.goSimilarMovieCallBack = { index in
+                    let data = self.similarViewModel.movies[index]
+                    let nextVC = MovieDetailVC()
+                    if let id = data.id {
+                        nextVC.viewModel.movie.id = id
+                    }
+                    self.navigationController?.pushViewController(nextVC, animated: true)
+                }
+                cell.similarCollectionView.reloadData()
+                return cell
+            } else {
+                let cell = UITableViewCell()
+                if similarViewModel.isLoading == true {
+                    let activityIndicator = UIActivityIndicatorView(style: .medium)
+                    activityIndicator.color = UIColor.label
+                    activityIndicator.startAnimating()
+                    activityIndicator.hidesWhenStopped = true
+                    activityIndicator.center = CGPoint(x: UIScreen.main.bounds.width / 2, y: 50)
+                    cell.addSubview(activityIndicator)
+                }
+                return cell
             }
-            cell.similarCollectionView.reloadData()
-            return cell
+            
         }
     }
     
@@ -200,15 +224,16 @@ extension MovieDetailVC: UITableViewDelegate, UITableViewDataSource {
 
 extension MovieDetailVC: DetailMovieModelDelegate, SimilarMoviesModelDelegate {
     func simiLarMoviesCompleted() {
+        similarViewModel.isLoading = false
         tableView.reloadSections([2], with: .fade)
     }
     
-    func simiLarMoviesError(err: ApplicationError) {
-        self.showActionAlert(message: err.description)
+    func simiLarMoviesError(err: Error) {
+        self.showActionAlert(message: err.localizedDescription)
     }
     
-    
     func movieCompleted() {
+        loadingIndicatorView.stopAnimating()
         fillData()
     }
     

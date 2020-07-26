@@ -47,11 +47,13 @@ class MovieDetailBodyTableViewCell: UITableViewCell {
         
         if let vote = movie.vote_average {
             voteAverageLabel.text = String(vote)
+            voteImage.fileName = "favorite"
         }
         
         if let image = movie.poster_path {
             if let url = URL(string: ServiceManager.imageRoot + image) {
                 imgView.kf.setImage(with: url)
+                imdbImage.fileName = "imdb"
             }
         } else {
             imgView.image = nil

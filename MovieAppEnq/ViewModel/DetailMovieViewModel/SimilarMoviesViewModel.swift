@@ -10,7 +10,7 @@ import Foundation
 
 protocol SimilarMoviesModelDelegate {
     func simiLarMoviesCompleted()
-    func simiLarMoviesError(err: ApplicationError)
+    func simiLarMoviesError(err: Error)
 }
 
 class SimilarMoviesViewModel {
@@ -29,7 +29,7 @@ class SimilarMoviesViewModel {
                 self.movies = data as! [Movie]
                 self.delegate?.simiLarMoviesCompleted()
             }.catch { error in
-                self.delegate?.simiLarMoviesError(err: error as! ApplicationError)
+                self.delegate?.simiLarMoviesError(err: error)
         }
     }
 }

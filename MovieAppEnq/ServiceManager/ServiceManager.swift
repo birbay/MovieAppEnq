@@ -58,7 +58,7 @@ class ServiceManager {
                     }
                 } else {
                     if let err = response.error {
-                        resolver.reject(err)
+                        resolver.reject(ApplicationError.noData)
                     }
                 }
             }

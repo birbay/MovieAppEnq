@@ -18,9 +18,11 @@ class SimilarMovieTableViewCell: UITableViewCell {
     
     var viewModel = SimilarMoviesViewModel()
     
+    var goSimilarMovieCallBack: ((Int) -> ())?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
         titleLabel.text = Strings.similarMovies.localize()
         setCollectionView()
     }
@@ -59,5 +61,11 @@ extension SimilarMovieTableViewCell: UICollectionViewDataSource, UICollectionVie
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if let goSimilarMovieCallBack = goSimilarMovieCallBack {
+            goSimilarMovieCallBack(indexPath.row)
+        }
+    }
     
 }

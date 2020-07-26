@@ -23,7 +23,8 @@ class SimilarCollectionViewCell: UICollectionViewCell {
     func configureCell(movie: Movie){
         
         titleLabel.text = movie.title
-        dateLabel.text = movie.release_date
+        let date = movie.release_date?.toDate(withFormat: "yyyy-MM-dd")
+        dateLabel.text = date?.toString(withFormat: "d MMM yyyy")
         
         if let image = movie.poster_path {
             if let url = URL(string: ServiceManager.imageRoot + image) {
@@ -33,6 +34,5 @@ class SimilarCollectionViewCell: UICollectionViewCell {
             img.image = nil
         }
     }
-    
     
 }
