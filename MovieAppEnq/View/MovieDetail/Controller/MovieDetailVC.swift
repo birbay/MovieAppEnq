@@ -14,7 +14,7 @@ class MovieDetailVC: BaseViewController {
     
     lazy var coverImageView: UIImageView = {
         let image = UIImageView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: imageCoverHeight))
-        image.backgroundColor = .clear
+        image.backgroundColor = .systemGray6
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
         image.isSkeletonable = true
@@ -67,6 +67,7 @@ class MovieDetailVC: BaseViewController {
         addCoverImageView()
         getData()
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationController?.navigationBar.prefersLargeTitles = false
@@ -209,7 +210,10 @@ extension MovieDetailVC: UITableViewDelegate, UITableViewDataSource {
                 if let imdbID = self.viewModel.movie.imdb_id {
                     let nextVC = IMDBWebViewVC()
                     nextVC.imdbID = imdbID
-                    self.navigationController?.pushViewController(nextVC, animated: true)
+                    self.navigationController?.push(viewController: nextVC,
+                                                    transitionType: CATransitionType.moveIn.rawValue,
+                                                    transitionsubtype: CATransitionSubtype.fromRight.rawValue,
+                                                    duration: 0.3)
                 }
             }
             return cell
@@ -238,7 +242,10 @@ extension MovieDetailVC: UITableViewDelegate, UITableViewDataSource {
                         "movieID": id as NSObject
                         ])
                     }
-                    self.navigationController?.pushViewController(nextVC, animated: true)
+                    self.navigationController?.push(viewController: nextVC,
+                                                    transitionType: CATransitionType.moveIn.rawValue,
+                                                    transitionsubtype: CATransitionSubtype.fromRight.rawValue,
+                                                    duration: 0.3)
                 }
             }
             cell.similarCollectionView.reloadData()

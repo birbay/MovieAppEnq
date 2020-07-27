@@ -19,13 +19,19 @@ class SimilarCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     func configureCell(movie: Movie){
+        contentView.fadeOut(completion: {
+            (finished: Bool) -> Void in
+            self.contentView.fadeIn()
+        })
         
         titleLabel.text = movie.title
-        let date = movie.release_date?.toDate(withFormat: "yyyy-MM-dd")
-        dateLabel.text = date?.toString(withFormat: "d MMM yyyy")
         
+        if let date = movie.release_date {
+            let newDate = date.toDate(withFormat: "yyyy-MM-dd")
+            dateLabel.text = newDate?.toString(withFormat: "d MMM yyyy")
+        }
         if let image = movie.poster_path {
             if let url = URL(string: ServiceManager.imageRoot + image) {
                 img.kf.setImage(with: url)

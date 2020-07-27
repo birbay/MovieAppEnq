@@ -18,6 +18,11 @@ class TypeCollectionViewCell: UICollectionViewCell {
     }
     
     func setStyle(){
+        contentView.fadeOut(completion: {
+            (finished: Bool) -> Void in
+            self.contentView.fadeIn()
+        })
+        
         backView.layer.cornerRadius = backView.frame.height / 2
         backView.layer.borderWidth = 0.5
         backView.layer.borderColor = UIColor.gray.cgColor

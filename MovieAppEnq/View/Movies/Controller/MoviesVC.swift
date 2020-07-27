@@ -32,6 +32,7 @@ class MoviesVC: BaseViewController, UISearchBarDelegate {
         super.viewDidLoad()
         
         title = Strings.upcomingMovies.localize()
+        setLoadingIndicatorToBarButton()
         setSearchController()
         setTableView()
         viewModel.getMovies()
@@ -43,7 +44,8 @@ class MoviesVC: BaseViewController, UISearchBarDelegate {
         // MARK: - to bring navBar back if transparentNavBar run
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: ""), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage(named: "")
-        navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     @objc override func refreshHandle(){
@@ -139,13 +141,17 @@ extension MoviesVC: UITableViewDelegate, UITableViewDataSource {
             if let id = data.id {
                 nextVC.viewModel.movie.id = id
             }
-            navigationController?.pushViewController(nextVC, animated: true)
+            navigationController?.push(viewController: nextVC,
+                                       transitionType: CATransitionType.moveIn.rawValue,
+                                       transitionsubtype: CATransitionSubtype.fromRight.rawValue,
+                                       duration: 0.3)
         }
     }
 }
 
 extension MoviesVC: MovieModelDelegate {
     func moviesCompleted() {
+        loadingIndicatorView.stopAnimating()
         viewModel.isLoading = false
         self.refreshControl?.endRefreshing()
         self.tableView.reloadData()
@@ -153,6 +159,7 @@ extension MoviesVC: MovieModelDelegate {
     
     func moviesError(err: ApplicationError?) {
         viewModel.isLoading = false
+        loadingIndicatorView.stopAnimating()
         self.refreshControl?.endRefreshing()
         self.showActionAlert(message: err?.description ?? "")
         viewModel.dummyDataCount = err?.id == 2 ? 0 : 10 

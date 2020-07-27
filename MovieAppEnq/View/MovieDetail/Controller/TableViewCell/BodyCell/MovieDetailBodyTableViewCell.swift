@@ -40,6 +40,12 @@ class MovieDetailBodyTableViewCell: UITableViewCell {
     }
     
     func configureCell(movie: MovieDetail){
+        
+        contentView.fadeOut(completion: {
+            (finished: Bool) -> Void in
+            self.contentView.fadeIn()
+        })
+        
         titleLabel.text = movie.title
         
         if let desc = movie.overview {

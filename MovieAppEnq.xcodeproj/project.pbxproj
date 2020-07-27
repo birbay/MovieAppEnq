@@ -12,6 +12,7 @@
 		F48AE7AD24CEBAA300572A1E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F48AE7AC24CEBAA300572A1E /* GoogleService-Info.plist */; };
 		F48AE7B124CECC1800572A1E /* MovieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48AE7B024CECC1800572A1E /* MovieRepository.swift */; };
 		F48AE7B324CED3AB00572A1E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48AE7B224CED3AB00572A1E /* WebKit.framework */; };
+		F48AE7BB24CEEBEA00572A1E /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48AE7BA24CEEBEA00572A1E /* UINavigationController+Extension.swift */; };
 		F4B849B224CCB9DC0093AECF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B849B124CCB9DC0093AECF /* AppDelegate.swift */; };
 		F4B849B424CCB9DC0093AECF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B849B324CCB9DC0093AECF /* SceneDelegate.swift */; };
 		F4B849BB24CCB9DD0093AECF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4B849BA24CCB9DD0093AECF /* Assets.xcassets */; };
@@ -55,8 +56,6 @@
 		F4B84A4B24CD7C940093AECF /* SimilarMoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B84A4A24CD7C940093AECF /* SimilarMoviesViewModel.swift */; };
 		F4B84A4F24CD90840093AECF /* IMDBWebViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B84A4D24CD90840093AECF /* IMDBWebViewVC.swift */; };
 		F4B84A5024CD90840093AECF /* IMDBWebViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B84A4E24CD90840093AECF /* IMDBWebViewVC.xib */; };
-		F4B84A5424CE12F90093AECF /* loading-dots-blue-on-white.json in Resources */ = {isa = PBXBuildFile; fileRef = F4B84A5224CE12F90093AECF /* loading-dots-blue-on-white.json */; };
-		F4B84A5524CE12F90093AECF /* loading-dots-in-yellow.json in Resources */ = {isa = PBXBuildFile; fileRef = F4B84A5324CE12F90093AECF /* loading-dots-in-yellow.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +66,7 @@
 		F48AE7AC24CEBAA300572A1E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F48AE7B024CECC1800572A1E /* MovieRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRepository.swift; sourceTree = "<group>"; };
 		F48AE7B224CED3AB00572A1E /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		F48AE7BA24CEEBEA00572A1E /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		F4B849AE24CCB9DC0093AECF /* MovieAppEnq.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieAppEnq.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4B849B124CCB9DC0093AECF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4B849B324CCB9DC0093AECF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,8 +113,6 @@
 		F4B84A4A24CD7C940093AECF /* SimilarMoviesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarMoviesViewModel.swift; sourceTree = "<group>"; };
 		F4B84A4D24CD90840093AECF /* IMDBWebViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMDBWebViewVC.swift; sourceTree = "<group>"; };
 		F4B84A4E24CD90840093AECF /* IMDBWebViewVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IMDBWebViewVC.xib; sourceTree = "<group>"; };
-		F4B84A5224CE12F90093AECF /* loading-dots-blue-on-white.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "loading-dots-blue-on-white.json"; sourceTree = "<group>"; };
-		F4B84A5324CE12F90093AECF /* loading-dots-in-yellow.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "loading-dots-in-yellow.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,8 +217,8 @@
 		F4B849C724CCBB270093AECF /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				F4B84A4724CD77D70093AECF /* DetailMovieViewModel */,
 				F4B84A4624CD77CE0093AECF /* MovieViewModel */,
+				F4B84A4724CD77D70093AECF /* DetailMovieViewModel */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -228,8 +226,9 @@
 		F4B849C824CCBB2E0093AECF /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				F4B849D224CCBCA50093AECF /* BaseViewController.swift */,
 				F4B84A2A24CCED760093AECF /* Helper.swift */,
+				F4B849D224CCBCA50093AECF /* BaseViewController.swift */,
+				F48AE7BA24CEEBEA00572A1E /* UINavigationController+Extension.swift */,
 				F4B84A1524CCDA690093AECF /* UIView+Extension.swift */,
 				F4B84A3624CCFFF80093AECF /* UITableView+Extension.swift */,
 				F4B84A3A24CD659F0093AECF /* String+Extension.swift */,
@@ -241,7 +240,6 @@
 		F4B849C924CCBB360093AECF /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				F4B84A5124CE12EC0093AECF /* Lottie */,
 				F4B849FA24CCCBCD0093AECF /* SVGs */,
 				F4B849BA24CCB9DD0093AECF /* Assets.xcassets */,
 			);
@@ -477,15 +475,6 @@
 			path = IMDBWebView;
 			sourceTree = "<group>";
 		};
-		F4B84A5124CE12EC0093AECF /* Lottie */ = {
-			isa = PBXGroup;
-			children = (
-				F4B84A5224CE12F90093AECF /* loading-dots-blue-on-white.json */,
-				F4B84A5324CE12F90093AECF /* loading-dots-in-yellow.json */,
-			);
-			path = Lottie;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -556,10 +545,8 @@
 				F4B849FC24CCCBE80093AECF /* favorite.svg in Resources */,
 				F4B84A1024CCD4730093AECF /* TypeCollectionViewCell.xib in Resources */,
 				F4B849EC24CCC2B70093AECF /* MoviesTableViewCell.xib in Resources */,
-				F4B84A5524CE12F90093AECF /* loading-dots-in-yellow.json in Resources */,
 				F4B84A5024CD90840093AECF /* IMDBWebViewVC.xib in Resources */,
 				F48AE7AD24CEBAA300572A1E /* GoogleService-Info.plist in Resources */,
-				F4B84A5424CE12F90093AECF /* loading-dots-blue-on-white.json in Resources */,
 				F4B849E524CCC13F0093AECF /* Localizable.strings in Resources */,
 				F4B84A0A24CCD4120093AECF /* GenresTableViewCell.xib in Resources */,
 				F4B849CF24CCBC160093AECF /* MoviesVC.xib in Resources */,
@@ -635,6 +622,7 @@
 				F4B849CE24CCBC160093AECF /* MoviesVC.swift in Sources */,
 				F4B84A0124CCD15C0093AECF /* MovieDetailBodyTableViewCell.swift in Sources */,
 				F4B84A4B24CD7C940093AECF /* SimilarMoviesViewModel.swift in Sources */,
+				F48AE7BB24CEEBEA00572A1E /* UINavigationController+Extension.swift in Sources */,
 				F4B84A3724CCFFF80093AECF /* UITableView+Extension.swift in Sources */,
 				F4B84A4124CD690C0093AECF /* MovieDetail.swift in Sources */,
 				F4B84A2624CCEC670093AECF /* NetworkResult.swift in Sources */,
