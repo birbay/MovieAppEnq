@@ -60,7 +60,7 @@ class MoviesVC: BaseViewController, UISearchBarDelegate {
         }
     }
     
-
+    
     // MARK: - SearchController
     
     func setSearchController() {
@@ -68,7 +68,7 @@ class MoviesVC: BaseViewController, UISearchBarDelegate {
         navigationItem.hidesSearchBarWhenScrolling = true
         definesPresentationContext = true
     }
-
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         viewModel.isLoading = true
         tableView.reloadData()
@@ -125,7 +125,7 @@ extension MoviesVC: UITableViewDelegate, UITableViewDataSource {
         if !viewModel.movies.isEmpty {
             let data = viewModel.movies[indexPath.row]
             cell.configureCell(movie: data)
-
+            
             cell.selectionStyle = .none
             cell.accessoryType = .disclosureIndicator
         }

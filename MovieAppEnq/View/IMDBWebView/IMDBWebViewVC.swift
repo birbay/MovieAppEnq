@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 
 class IMDBWebViewVC: BaseViewController {
-
+    
     @IBOutlet weak var webView: WKWebView!
     
     var imdbID: String = ""
@@ -20,9 +20,9 @@ class IMDBWebViewVC: BaseViewController {
         if let url = URL(string: "https://www.imdb.com/title/\(String(describing: imdbID))") {
             webView.load(URLRequest(url: url))
         }
-            
+        
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

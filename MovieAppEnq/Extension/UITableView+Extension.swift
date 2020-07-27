@@ -10,9 +10,7 @@ import UIKit
 import Macaw
 
 extension UITableView {
-    
     func setEmptyView(title: String, message: String, svgName: String) {
-        
         let emptyView = UIView(frame: CGRect(x: self.center.x, y: self.center.y, width: self.bounds.size.width, height: self.bounds.size.height))
         
         let messageImageView = SVGView()
@@ -49,12 +47,6 @@ extension UITableView {
         messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20).isActive = true
         messageLabel.centerXAnchor.constraint(equalTo: emptyView.centerXAnchor).isActive = true
         
-//        if #available(iOS 13.0, *) {
-//            messageImageView.image = messageImage.withTintColor(UIColor.systemGroupedBackground)
-//        } else {
-//            messageImageView.image = messageImage
-//        }
-        
         titleLabel.text = title
         messageLabel.text = message
         messageLabel.numberOfLines = 0
@@ -79,10 +71,7 @@ extension UITableView {
     }
     
     func restore() {
-        
         self.backgroundView = nil
         self.separatorStyle = .singleLine
-        
     }
-    
 }

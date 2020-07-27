@@ -9,7 +9,6 @@
 import UIKit
 
 public extension UINavigationController {
-
     func pop(transitionType type: String = CATransitionType.fade.rawValue,
              transitionsubtype subtype: String = CATransitionSubtype.fromRight.rawValue,
              duration: CFTimeInterval = 0.3) {
@@ -35,5 +34,4 @@ public extension UINavigationController {
         transition.subtype = CATransitionSubtype(rawValue: subtype)
         self.view.layer.add(transition, forKey: nil)
     }
-
 }

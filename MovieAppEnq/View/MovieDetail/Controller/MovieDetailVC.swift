@@ -23,6 +23,12 @@ class MovieDetailVC: BaseViewController {
         return image
     }()
     
+    lazy var coverViewOfImage: UIView = {
+        let coverView = UIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: imageCoverHeight))
+        coverView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        return coverView
+    }()
+    
     var headerView: UIView = {
         let size: CGFloat = 25
         let width = UIScreen.main.bounds.width
@@ -33,11 +39,11 @@ class MovieDetailVC: BaseViewController {
         let viewTop = UIView(frame: CGRect(x: 0, y: -size, width: width, height: size*2))
         viewTop.backgroundColor = .systemBackground
         viewTop.layer.cornerRadius = size
-        viewTop.dropShadow(color: .black, opacity: 0.3, offSet: CGSize(width: -1, height: 1), radius: 8, scale: true)
+        viewTop.dropShadow(color: .black, opacity: 0.8, offSet: CGSize(width: -1, height: 1), radius: 12, scale: true)
         containerView.addSubview(viewTop)
         return containerView
     }()
-
+    
     var topbarHeight: CGFloat {
         return (view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0.0) +
             (self.navigationController?.navigationBar.frame.height ?? 0.0)
@@ -77,6 +83,7 @@ class MovieDetailVC: BaseViewController {
         super.viewWillAppear(animated)
         
         transparentNavBar()
+        self.setNavbar(backgroundColorAlpha: navBarAlpha)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -103,8 +110,8 @@ class MovieDetailVC: BaseViewController {
         
         if let id = viewModel.movie.id, let name = viewModel.movie.title {
             Analytics.logEvent("movieDetail", parameters: [
-            "movieName": name as NSObject,
-            "movieID": id as NSObject
+                "movieName": name as NSObject,
+                "movieID": id as NSObject
             ])
         }
         
@@ -129,6 +136,8 @@ class MovieDetailVC: BaseViewController {
         
         // MARK: - addImageCover
         view.addSubview(coverImageView)
+        view.bringSubviewToFront(coverViewOfImage)
+        view.addSubview(coverViewOfImage)
         view.bringSubviewToFront(tableView)
     }
     
@@ -138,14 +147,16 @@ class MovieDetailVC: BaseViewController {
         
         // MARK: - imageCoverHeight
         let y = imageCoverHeight - (scrollView.contentOffset.y + imageCoverHeight )
-//        let h = max(topbarHeight - 20, y)
+        //        let h = max(topbarHeight - 20, y)
         let rect = CGRect(x: 0, y: 0, width: view.bounds.width, height: y) // header / 2
         coverImageView.frame = rect
+        coverViewOfImage.frame = rect
         
         // MARK: - when scroll navbar transparent progress
         let denominator: CGFloat = 30
-        let alpha = min(1, (scrollView.contentOffset.y + denominator + topbarHeight) / denominator)
-        self.setNavbar(backgroundColorAlpha: alpha)
+        navBarAlpha = min(1, (scrollView.contentOffset.y + denominator + topbarHeight) / denominator)
+        self.setNavbar(backgroundColorAlpha: navBarAlpha)
+        
     }
     
 }
@@ -238,10 +249,11 @@ extension MovieDetailVC: UITableViewDelegate, UITableViewDataSource {
                     if let id = data.id, let name = data.original_title {
                         nextVC.viewModel.movie.id = id
                         Analytics.logEvent("similarMovies", parameters: [
-                        "movieName": name as NSObject,
-                        "movieID": id as NSObject
+                            "movieName": name as NSObject,
+                            "movieID": id as NSObject
                         ])
                     }
+                    
                     self.navigationController?.push(viewController: nextVC,
                                                     transitionType: CATransitionType.moveIn.rawValue,
                                                     transitionsubtype: CATransitionSubtype.fromRight.rawValue,

@@ -22,6 +22,7 @@ class BaseViewController: UIViewController {
         let tv = UITableView()
         tv.separatorStyle = .singleLine
         tv.clipsToBounds = true
+        tv.showsVerticalScrollIndicator = false
         tv.keyboardDismissMode = .onDrag
         return tv
     }()
@@ -35,18 +36,7 @@ class BaseViewController: UIViewController {
         return indicatorView
     }()
     
-    // MARK: - lottieView
-//    var animationView: AnimationView?
-    
-//    lazy var animationView: AnimationView = {
-//        let view = AnimationView.init(name: "loading-dots-blue-on-white")
-//        view.frame = view.bounds
-//        view.contentMode = .scaleAspectFit
-//        view.loopMode = .loop
-//        view.animationSpeed = 1.5
-//        return view
-//    }()
-    
+    var navBarAlpha: CGFloat = 0.0
     override func viewDidLoad() {
         super.viewDidLoad()
         
