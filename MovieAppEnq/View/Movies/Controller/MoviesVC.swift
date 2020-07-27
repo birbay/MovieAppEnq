@@ -32,7 +32,6 @@ class MoviesVC: BaseViewController, UISearchBarDelegate {
         super.viewDidLoad()
         
         title = Strings.upcomingMovies.localize()
-        
         setSearchController()
         setTableView()
         viewModel.getMovies()
@@ -44,6 +43,7 @@ class MoviesVC: BaseViewController, UISearchBarDelegate {
         // MARK: - to bring navBar back if transparentNavBar run
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: ""), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage(named: "")
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     @objc override func refreshHandle(){

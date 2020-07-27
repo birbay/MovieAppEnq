@@ -85,12 +85,6 @@ class BaseViewController: UIViewController {
         self.navigationItem.setRightBarButton(barButton, animated: true)
     }
     
-//    // MARK: - lottie
-//    func setLoading(){
-//        animationView.play()
-//        view.addSubview(animationView)
-//    }
-    
     // MARK: - when scroll navbar transparent progress
     func setNavbar(backgroundColorAlpha alpha: CGFloat) {
         let newColor = universalWhite(alpha: alpha) //your color

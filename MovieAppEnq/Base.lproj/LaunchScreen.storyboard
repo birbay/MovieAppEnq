@@ -14,6 +14,20 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="night_movie" translatesAutoresizingMaskIntoConstraints="NO" id="oWt-Ec-KP6">
+                                <rect key="frame" x="30" y="273" width="354" height="350"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="350" id="c6h-Ao-MCJ"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oWt-Ec-KP6" secondAttribute="trailing" constant="30" id="L9v-SP-qyL"/>
+                            <constraint firstItem="oWt-Ec-KP6" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="b2n-0b-g7g"/>
+                            <constraint firstItem="oWt-Ec-KP6" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="bWe-Py-bGs"/>
+                            <constraint firstItem="oWt-Ec-KP6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="nxD-bV-4S0"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -22,4 +36,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="night_movie" width="1000" height="1000"/>
+    </resources>
 </document>

@@ -11,6 +11,7 @@
 		F48AE7AB24CE3CA700572A1E /* night_movie.svg in Resources */ = {isa = PBXBuildFile; fileRef = F48AE7AA24CE3CA600572A1E /* night_movie.svg */; };
 		F48AE7AD24CEBAA300572A1E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F48AE7AC24CEBAA300572A1E /* GoogleService-Info.plist */; };
 		F48AE7B124CECC1800572A1E /* MovieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48AE7B024CECC1800572A1E /* MovieRepository.swift */; };
+		F48AE7B324CED3AB00572A1E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48AE7B224CED3AB00572A1E /* WebKit.framework */; };
 		F4B849B224CCB9DC0093AECF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B849B124CCB9DC0093AECF /* AppDelegate.swift */; };
 		F4B849B424CCB9DC0093AECF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B849B324CCB9DC0093AECF /* SceneDelegate.swift */; };
 		F4B849BB24CCB9DD0093AECF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4B849BA24CCB9DD0093AECF /* Assets.xcassets */; };
@@ -65,6 +66,7 @@
 		F48AE7AA24CE3CA600572A1E /* night_movie.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = night_movie.svg; sourceTree = "<group>"; };
 		F48AE7AC24CEBAA300572A1E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F48AE7B024CECC1800572A1E /* MovieRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRepository.swift; sourceTree = "<group>"; };
+		F48AE7B224CED3AB00572A1E /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		F4B849AE24CCB9DC0093AECF /* MovieAppEnq.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieAppEnq.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4B849B124CCB9DC0093AECF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4B849B324CCB9DC0093AECF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F48AE7B324CED3AB00572A1E /* WebKit.framework in Frameworks */,
 				5ACB244E4FC16D2CA8EB76B1 /* Pods_MovieAppEnq.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,6 +142,7 @@
 		613E19283AEDAD59AA1CAD19 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F48AE7B224CED3AB00572A1E /* WebKit.framework */,
 				20780E71D3631E8951F03C1B /* Pods_MovieAppEnq.framework */,
 			);
 			name = Frameworks;

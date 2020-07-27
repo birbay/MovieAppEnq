@@ -65,14 +65,11 @@ class MovieDetailVC: BaseViewController {
         
         setTableView()
         addCoverImageView()
-//        setLoading()
         getData()
-        
-        
-//        Analytics.logEvent("share_image", parameters: [
-//        "name": "zzzzzz" as NSObject,
-//        "full_text": "fullzzzzz" as NSObject
-//        ])
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,7 +83,6 @@ class MovieDetailVC: BaseViewController {
         
         let md = MovieDetail()
         viewModel.movie = md
-        similarViewModel.movies.removeAll()
     }
     
     func getData(){
@@ -103,6 +99,13 @@ class MovieDetailVC: BaseViewController {
     }
     
     func fillData() {
+        
+        if let id = viewModel.movie.id, let name = viewModel.movie.title {
+            Analytics.logEvent("movieDetail", parameters: [
+            "movieName": name as NSObject,
+            "movieID": id as NSObject
+            ])
+        }
         
         // MARK: - FillImageCover
         if let image = self.viewModel.movie.backdrop_path {
@@ -139,8 +142,8 @@ class MovieDetailVC: BaseViewController {
         coverImageView.frame = rect
         
         // MARK: - when scroll navbar transparent progress
-        let denominator: CGFloat = 50
-        let alpha = min(1, (scrollView.contentOffset.y + denominator * 2) / denominator)
+        let denominator: CGFloat = 30
+        let alpha = min(1, (scrollView.contentOffset.y + denominator + topbarHeight) / denominator)
         self.setNavbar(backgroundColorAlpha: alpha)
     }
     
@@ -175,9 +178,6 @@ extension MovieDetailVC: UITableViewDelegate, UITableViewDataSource {
             make.edges.equalToSuperview()
         }
     }
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 20.0
-//    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 1 {
@@ -231,8 +231,12 @@ extension MovieDetailVC: UITableViewDelegate, UITableViewDataSource {
                 cell.goSimilarMovieCallBack = { index in
                     let data = self.similarViewModel.movies[index]
                     let nextVC = MovieDetailVC()
-                    if let id = data.id {
+                    if let id = data.id, let name = data.original_title {
                         nextVC.viewModel.movie.id = id
+                        Analytics.logEvent("similarMovies", parameters: [
+                        "movieName": name as NSObject,
+                        "movieID": id as NSObject
+                        ])
                     }
                     self.navigationController?.pushViewController(nextVC, animated: true)
                 }
