@@ -18,18 +18,19 @@ class SimilarMoviesViewModel {
     var delegate: SimilarMoviesModelDelegate?
     var movies = [Movie]()
     
-    var id: Int = 0
+    var movieID: Int?
     var isLoading: Bool = true
     
     func getSimilarMovies() {
         self.movies.removeAll()
-        let resource = Resource(url: URL(string: ServiceManager.root + "\(id)/" + "similar" + ServiceManager.apiKey)!)
-        ServiceManager.load(resource)
-            .done { data -> Void in
-                self.movies = data as! [Movie]
-                self.delegate?.simiLarMoviesCompleted()
+        if let id = movieID {
+            MovieRepository.getSimilarMovies(movieID: id)
+                .done { data -> Void in
+                    self.movies = data.results
+                    self.delegate?.simiLarMoviesCompleted()
             }.catch { error in
                 self.delegate?.simiLarMoviesError(err: error as? ApplicationError)
+            }
         }
     }
 }

@@ -14,4 +14,5 @@ target 'MovieAppEnq' do
   pod 'PromiseKit', '~> 6.8'
   pod 'SkeletonView'
   pod 'lottie-ios'
+  pod 'Firebase/Analytics'
 end

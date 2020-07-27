@@ -8,6 +8,7 @@
 
 import UIKit
 import SkeletonView
+import FirebaseAnalytics
 
 class MovieDetailVC: BaseViewController {
     
@@ -66,6 +67,12 @@ class MovieDetailVC: BaseViewController {
         addCoverImageView()
 //        setLoading()
         getData()
+        
+        
+//        Analytics.logEvent("share_image", parameters: [
+//        "name": "zzzzzz" as NSObject,
+//        "full_text": "fullzzzzz" as NSObject
+//        ])
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,7 +96,7 @@ class MovieDetailVC: BaseViewController {
         viewModel.getMovie()
         
         if let id = viewModel.movie.id {
-            similarViewModel.id = id
+            similarViewModel.movieID = id
         }
         similarViewModel.getSimilarMovies()
         self.tableView.reloadData()

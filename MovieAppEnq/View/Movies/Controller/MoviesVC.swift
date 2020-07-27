@@ -9,7 +9,6 @@
 import UIKit
 import SnapKit
 import SkeletonView
-import QuartzCore
 
 class MoviesVC: BaseViewController, UISearchBarDelegate {
     

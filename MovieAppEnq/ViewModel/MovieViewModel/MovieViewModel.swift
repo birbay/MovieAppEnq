@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import Alamofire
+import PromiseKit
 
 protocol MovieModelDelegate {
     func moviesCompleted()
@@ -27,29 +29,26 @@ class MovieViewModel {
         getMovies()
     }
     
-    // MARK: - zzzz I'll put somewhere else these later
-    
     func getMovies() {
-        movies.removeAll()
-        let resource = Resource(url: URL(string: ServiceManager.root + "upcoming" + ServiceManager.apiKey)!)
-        ServiceManager.load(resource)
+        self.movies.removeAll()
+        MovieRepository.getUpcomingMovies()
             .done { data -> Void in
-                self.movies = data as! [Movie]
+                self.movies = data.results
                 self.delegate?.moviesCompleted()
-            }.catch { error in
-                self.delegate?.moviesError(err: error as? ApplicationError)
+        }.catch { error in
+            self.delegate?.moviesError(err: error as? ApplicationError)
         }
     }
     
     func getSearchMovie(searchText: String) {
         movies.removeAll()
-        let resource = Resource(url: URL(string: ServiceManager.search + "movie/" + ServiceManager.apiKey +  "&query=" + searchText + "&page=1")!)
-        ServiceManager.load(resource)
+        MovieRepository.getSearchMovie(searchText: searchText)
             .done { data -> Void in
-            self.movies = data as! [Movie]
+                self.movies = data.results
                 self.delegate?.moviesCompleted()
-            }.catch { error in
-                self.delegate?.moviesError(err: error as? ApplicationError)
+        }.catch { error in
+            self.delegate?.moviesError(err: error as? ApplicationError)
         }
     }
 }
+

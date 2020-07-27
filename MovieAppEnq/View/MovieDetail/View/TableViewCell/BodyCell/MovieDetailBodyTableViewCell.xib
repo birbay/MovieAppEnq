@@ -85,6 +85,12 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                 </subviews>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I0J-UW-p2N" customClass="SVGView" customModule="Macaw">
                                 <rect key="frame" x="198" y="0.0" width="60" height="30"/>
@@ -93,6 +99,9 @@
                                     <constraint firstAttribute="height" constant="30" id="32U-h5-2du"/>
                                     <constraint firstAttribute="width" secondItem="I0J-UW-p2N" secondAttribute="height" multiplier="2:1" id="4xW-QD-RWa"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="NO"/>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <userDefinedRuntimeAttributes>
@@ -107,7 +116,7 @@
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                             <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
-                                <real key="value" value="8"/>
+                                <real key="value" value="12"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                         <connections>

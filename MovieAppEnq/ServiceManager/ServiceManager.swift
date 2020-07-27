@@ -19,54 +19,21 @@ class ServiceManager {
     
 //    static let lang: String = "" // enum case TR-EN
     
-    class func load(_ resource: Resource) -> Promise<Any>  {
-        let (promise, resolver) = Promise<Any>.pending()
-        if Connectivity.isConnectedToInternet() {
-            AF.request(resource.url, method: HTTPMethod(rawValue: resource.method), encoding: JSONEncoding.default)
-                .responseJSON { response in
-                if let data = response.data {
-                    do {
-                        let items = try JSONDecoder().decode(AllMovie.self, from: data)
-                        resolver.fulfill(items.results)
-                    } catch {
-                        resolver.reject(ApplicationError.placesCouldNotBeParsed)
+    class func load(_ resource: Resource) -> Promise<Data>  {
+        return Promise { seal in
+            if Connectivity.isConnectedToInternet() {
+                AF.request(resource.url, method: HTTPMethod(rawValue: resource.method), encoding: JSONEncoding.default).response { response in
+                    if let data  = response.data {
+                        seal.resolve(.fulfilled(data))
                     }
-                } else {
-                    if let err = response.error {
-                        resolver.reject(err)
+                    if let error = response.error {
+                        seal.reject(error.errorDescription as! Error)
                     }
                 }
+            } else {
+                seal.reject(ApplicationError.internetError)
             }
-        } else {
-            resolver.reject(ApplicationError.internetError)
         }
-        
-        return promise
-    }
-    
-    class func loadDetail(_ resource: Resource) -> Promise<Any>  {
-        let (promise, resolver) = Promise<Any>.pending()
-        if Connectivity.isConnectedToInternet() {
-            AF.request(resource.url, method: HTTPMethod(rawValue: resource.method), encoding: JSONEncoding.default)
-                .responseJSON { response in
-                if let data = response.data {
-                    do {
-                        let items = try JSONDecoder().decode(MovieDetail.self, from: data)
-                        resolver.fulfill(items)
-                    } catch {
-                        resolver.reject(ApplicationError.placesCouldNotBeParsed)
-                    }
-                } else {
-                    if let err = response.error {
-                        resolver.reject(ApplicationError.noData)
-                    }
-                }
-            }
-        } else {
-            resolver.reject(ApplicationError.internetError)
-        }
-        
-        return promise
     }
     
 }

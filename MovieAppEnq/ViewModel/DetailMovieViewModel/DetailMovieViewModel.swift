@@ -27,13 +27,12 @@ class DetailMovieViewModel {
     
     func getMovie() {
         if let id = movie.id {
-            let resource = Resource(url: URL(string: ServiceManager.root + "\(id)" + ServiceManager.apiKey)!)
-            ServiceManager.loadDetail(resource)
+            MovieRepository.getMovieDetail(movieID: id)
                 .done { data -> Void in
-                    self.movie = data as! MovieDetail
+                    self.movie = data
                     self.delegate?.movieCompleted()
-                }.catch { error in
-                    self.delegate?.movieError(err: error as? ApplicationError)
+            }.catch { error in
+                self.delegate?.movieError(err: error as? ApplicationError)
             }
         }
     }
