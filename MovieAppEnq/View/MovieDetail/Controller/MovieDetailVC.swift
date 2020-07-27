@@ -18,7 +18,7 @@ class MovieDetailVC: BaseViewController {
         image.clipsToBounds = true
         image.isSkeletonable = true
         image.showAnimatedGradientSkeleton()
-        image.backgroundColor = UIColor.clear
+        image.backgroundColor = UIColor.systemGray5
         return image
     }()
     
@@ -32,6 +32,7 @@ class MovieDetailVC: BaseViewController {
         let viewTop = UIView(frame: CGRect(x: 0, y: -size, width: width, height: size*2))
         viewTop.backgroundColor = .systemBackground
         viewTop.layer.cornerRadius = size
+        viewTop.dropShadow(color: .black, opacity: 0.3, offSet: CGSize(width: -1, height: 1), radius: 8, scale: true)
         containerView.addSubview(viewTop)
         return containerView
     }()
@@ -242,8 +243,8 @@ extension MovieDetailVC: DetailMovieModelDelegate, SimilarMoviesModelDelegate {
         tableView.reloadSections([2], with: .fade)
     }
     
-    func simiLarMoviesError(err: Error) {
-        self.showActionAlert(message: err.localizedDescription)
+    func simiLarMoviesError(err: ApplicationError?) {
+        self.showActionAlert(message: err?.description ?? "")
     }
     
     func movieCompleted() {
@@ -251,8 +252,8 @@ extension MovieDetailVC: DetailMovieModelDelegate, SimilarMoviesModelDelegate {
         fillData()
     }
     
-    func movieError(err: ApplicationError) {
-        self.showActionAlert(message: err.description)
+    func movieError(err: ApplicationError?) {
+        self.showActionAlert(message: err?.description ?? "")
     }
     
 }

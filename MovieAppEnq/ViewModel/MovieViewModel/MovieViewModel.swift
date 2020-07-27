@@ -10,7 +10,7 @@ import Foundation
 
 protocol MovieModelDelegate {
     func moviesCompleted()
-    func moviesError(err: Error)
+    func moviesError(err: ApplicationError?)
 }
 
 class MovieViewModel {
@@ -21,6 +21,7 @@ class MovieViewModel {
     var movies = [Movie]()
     
     var isLoading: Bool = true
+    var dummyDataCount: Int = 10
     
     func refreshHandle() {
         getMovies()
@@ -36,7 +37,7 @@ class MovieViewModel {
                 self.movies = data as! [Movie]
                 self.delegate?.moviesCompleted()
             }.catch { error in
-                self.delegate?.moviesError(err: error)
+                self.delegate?.moviesError(err: error as? ApplicationError)
         }
     }
     
@@ -48,7 +49,7 @@ class MovieViewModel {
             self.movies = data as! [Movie]
                 self.delegate?.moviesCompleted()
             }.catch { error in
-                self.delegate?.moviesError(err: error)
+                self.delegate?.moviesError(err: error as? ApplicationError)
         }
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 
 protocol DetailMovieModelDelegate {
     func movieCompleted()
-    func movieError(err: ApplicationError)
+    func movieError(err: ApplicationError?)
 }
 
 class DetailMovieViewModel {
@@ -33,7 +33,7 @@ class DetailMovieViewModel {
                     self.movie = data as! MovieDetail
                     self.delegate?.movieCompleted()
                 }.catch { error in
-                    self.delegate?.movieError(err: error as! ApplicationError)
+                    self.delegate?.movieError(err: error as? ApplicationError)
             }
         }
     }

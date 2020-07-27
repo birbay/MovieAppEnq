@@ -18,11 +18,19 @@ enum ApplicationError: Error {
     case placesCouldNotBeParsed
     case internetError
     
-    var description : String {
-      switch self {
-      case .noData: return Strings.error.localize()
-      case .placesCouldNotBeParsed: return Strings.parse_error.localize()
-      case .internetError: return Strings.internet_connection.localize()
-      }
+    var description: String {
+        switch self {
+            case .noData: return Strings.error.localize()
+            case .placesCouldNotBeParsed: return Strings.parse_error.localize()
+            case .internetError: return Strings.internet_connection.localize()
+        }
+    }
+    
+    var id: Int {
+        switch self {
+            case .noData: return 0
+            case .placesCouldNotBeParsed: return 1
+            case .internetError: return 2
+        }
     }
 }

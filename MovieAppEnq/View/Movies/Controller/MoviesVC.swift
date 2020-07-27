@@ -114,7 +114,7 @@ extension MoviesVC: UITableViewDelegate, UITableViewDataSource {
             } else {
                 tableView.restore()
             }
-            return 10
+            return viewModel.dummyDataCount
         }
     }
     
@@ -152,10 +152,11 @@ extension MoviesVC: MovieModelDelegate {
         self.tableView.reloadData()
     }
     
-    func moviesError(err: Error) {
+    func moviesError(err: ApplicationError?) {
         viewModel.isLoading = false
         self.refreshControl?.endRefreshing()
-        self.showActionAlert(message: err.localizedDescription)
+        self.showActionAlert(message: err?.description ?? "")
+        viewModel.dummyDataCount = err?.id == 2 ? 0 : 10 
         self.tableView.reloadData()
     }
     

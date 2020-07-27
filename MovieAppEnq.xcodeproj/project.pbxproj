@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5ACB244E4FC16D2CA8EB76B1 /* Pods_MovieAppEnq.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20780E71D3631E8951F03C1B /* Pods_MovieAppEnq.framework */; };
+		F48AE7AB24CE3CA700572A1E /* night_movie.svg in Resources */ = {isa = PBXBuildFile; fileRef = F48AE7AA24CE3CA600572A1E /* night_movie.svg */; };
 		F4B849B224CCB9DC0093AECF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B849B124CCB9DC0093AECF /* AppDelegate.swift */; };
 		F4B849B424CCB9DC0093AECF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B849B324CCB9DC0093AECF /* SceneDelegate.swift */; };
 		F4B849BB24CCB9DD0093AECF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4B849BA24CCB9DD0093AECF /* Assets.xcassets */; };
@@ -59,6 +60,7 @@
 		20780E71D3631E8951F03C1B /* Pods_MovieAppEnq.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieAppEnq.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21AF143FFFAED597141FCD78 /* Pods-MovieAppEnq.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieAppEnq.release.xcconfig"; path = "Target Support Files/Pods-MovieAppEnq/Pods-MovieAppEnq.release.xcconfig"; sourceTree = "<group>"; };
 		7B37C5FA605AAB11DEEDDFFB /* Pods-MovieAppEnq.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieAppEnq.debug.xcconfig"; path = "Target Support Files/Pods-MovieAppEnq/Pods-MovieAppEnq.debug.xcconfig"; sourceTree = "<group>"; };
+		F48AE7AA24CE3CA600572A1E /* night_movie.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = night_movie.svg; sourceTree = "<group>"; };
 		F4B849AE24CCB9DC0093AECF /* MovieAppEnq.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieAppEnq.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4B849B124CCB9DC0093AECF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4B849B324CCB9DC0093AECF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 		F4B849FA24CCCBCD0093AECF /* SVGs */ = {
 			isa = PBXGroup;
 			children = (
+				F48AE7AA24CE3CA600572A1E /* night_movie.svg */,
 				F4B84A4424CD722A0093AECF /* no_movie.svg */,
 				F4B84A1324CCD98A0093AECF /* imdb.svg */,
 				F4B849FB24CCCBE80093AECF /* favorite.svg */,
@@ -530,6 +533,7 @@
 				F4B849BE24CCB9DD0093AECF /* LaunchScreen.storyboard in Resources */,
 				F4B84A4524CD722A0093AECF /* no_movie.svg in Resources */,
 				F4B84A0224CCD15C0093AECF /* MovieDetailBodyTableViewCell.xib in Resources */,
+				F48AE7AB24CE3CA700572A1E /* night_movie.svg in Resources */,
 				F4B84A2124CCDEBF0093AECF /* SimilarCollectionViewCell.xib in Resources */,
 				F4B849FC24CCCBE80093AECF /* favorite.svg in Resources */,
 				F4B84A1024CCD4730093AECF /* TypeCollectionViewCell.xib in Resources */,
