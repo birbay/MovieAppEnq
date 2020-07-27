@@ -31,7 +31,7 @@ class MovieViewModel {
     
     func getMovies() {
         self.movies.removeAll()
-        MovieRepository.getUpcomingMovies()
+        MovieRepository.fetchUpcomingMovies()
             .done { data -> Void in
                 self.movies = data.results
                 self.delegate?.moviesCompleted()
@@ -42,7 +42,7 @@ class MovieViewModel {
     
     func getSearchMovie(searchText: String) {
         movies.removeAll()
-        MovieRepository.getSearchMovie(searchText: searchText)
+        MovieRepository.fetchSearchMovie(searchText: searchText)
             .done { data -> Void in
                 self.movies = data.results
                 self.delegate?.moviesCompleted()

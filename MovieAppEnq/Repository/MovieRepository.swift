@@ -11,52 +11,48 @@ import PromiseKit
 
 class MovieRepository {
     
-    class func getUpcomingMovies() -> Promise<AllMovie> {
+    class func fetchUpcomingMovies() -> Promise<AllMovie> {
         return Promise { seal in
             let resource = Resource(url: URL(string: ServiceManager.root + "upcoming" + ServiceManager.apiKey)!)
-            ServiceManager.load(resource)
+            ServiceManager.load(resource, type: AllMovie.self)
                 .done { data -> Void in
-                    let items = try JSONDecoder().decode(AllMovie.self, from: data)
-                    seal.resolve(.fulfilled(items))
-                }.catch { error in
-                seal.reject(error)
-            }
-        }
-    }
-    
-    class func getSearchMovie(searchText: String) -> Promise<AllMovie> {
-        return Promise { seal in
-            let resource = Resource(url: URL(string: ServiceManager.search + "movie/" + ServiceManager.apiKey +  "&query=" + searchText + "&page=1")!)
-            ServiceManager.load(resource)
-                .done { data -> Void in
-                    let items = try JSONDecoder().decode(AllMovie.self, from: data)
-                    seal.resolve(.fulfilled(items))
-                }.catch { error in
-                seal.reject(error)
-            }
-        }
-    }
-    
-    class func getMovieDetail(movieID: Int) -> Promise<MovieDetail> {
-        return Promise { seal in
-            let resource = Resource(url: URL(string: ServiceManager.root + "\(movieID)" + ServiceManager.apiKey)!)
-            ServiceManager.load(resource)
-                .done { data -> Void in
-                    let item = try JSONDecoder().decode(MovieDetail.self, from: data)
-                    seal.resolve(.fulfilled(item))
+                    seal.resolve(.fulfilled(data))
             }.catch { error in
                 seal.reject(error)
             }
         }
     }
     
-    class func getSimilarMovies(movieID: Int) -> Promise<AllMovie> {
+    class func fetchSearchMovie(searchText: String) -> Promise<AllMovie> {
+        return Promise { seal in
+            let resource = Resource(url: URL(string: ServiceManager.search + "movie/" + ServiceManager.apiKey +  "&query=" + searchText + "&page=1")!)
+            ServiceManager.load(resource, type: AllMovie.self)
+                .done { data -> Void in
+                    seal.resolve(.fulfilled(data))
+            }.catch { error in
+                seal.reject(error)
+            }
+        }
+    }
+    
+    class func fetchMovieDetail(movieID: Int) -> Promise<MovieDetail> {
+        return Promise { seal in
+            let resource = Resource(url: URL(string: ServiceManager.root + "\(movieID)" + ServiceManager.apiKey)!)
+            ServiceManager.load(resource, type: MovieDetail.self)
+                .done { data -> Void in
+                    seal.resolve(.fulfilled(data))
+            }.catch { error in
+                seal.reject(error)
+            }
+        }
+    }
+    
+    class func fetchSimilarMovies(movieID: Int) -> Promise<AllMovie> {
         return Promise { seal in
             let resource = Resource(url: URL(string: ServiceManager.root + "\(movieID)/" + "similar" + ServiceManager.apiKey)!)
-            ServiceManager.load(resource)
+            ServiceManager.load(resource, type: AllMovie.self)
                 .done { data -> Void in
-                    let item = try JSONDecoder().decode(AllMovie.self, from: data)
-                    seal.resolve(.fulfilled(item))
+                    seal.resolve(.fulfilled(data))
             }.catch { error in
                 seal.reject(error)
             }

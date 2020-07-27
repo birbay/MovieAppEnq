@@ -27,7 +27,7 @@ class DetailMovieViewModel {
     
     func getMovie() {
         if let id = movie.id {
-            MovieRepository.getMovieDetail(movieID: id)
+            MovieRepository.fetchMovieDetail(movieID: id)
                 .done { data -> Void in
                     self.movie = data
                     self.delegate?.movieCompleted()

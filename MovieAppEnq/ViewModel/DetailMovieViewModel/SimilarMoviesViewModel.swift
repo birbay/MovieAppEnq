@@ -24,13 +24,14 @@ class SimilarMoviesViewModel {
     func getSimilarMovies() {
         self.movies.removeAll()
         if let id = movieID {
-            MovieRepository.getSimilarMovies(movieID: id)
+            MovieRepository.fetchSimilarMovies(movieID: id)
                 .done { data -> Void in
                     self.movies = data.results
                     self.delegate?.simiLarMoviesCompleted()
             }.catch { error in
                 self.delegate?.simiLarMoviesError(err: error as? ApplicationError)
             }
+//            #colorLiteral(red: 0.968754828, green: 0.9688635468, blue: 0.9686921239, alpha: 1)
         }
     }
 }
