@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		5ACB244E4FC16D2CA8EB76B1 /* Pods_MovieAppEnq.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20780E71D3631E8951F03C1B /* Pods_MovieAppEnq.framework */; };
+		F41BAE3424D017540020045B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F41BAE3624D017540020045B /* Localizable.strings */; };
 		F48AE7AB24CE3CA700572A1E /* night_movie.svg in Resources */ = {isa = PBXBuildFile; fileRef = F48AE7AA24CE3CA600572A1E /* night_movie.svg */; };
 		F48AE7AD24CEBAA300572A1E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F48AE7AC24CEBAA300572A1E /* GoogleService-Info.plist */; };
 		F48AE7B124CECC1800572A1E /* MovieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48AE7B024CECC1800572A1E /* MovieRepository.swift */; };
@@ -21,7 +22,6 @@
 		F4B849CF24CCBC160093AECF /* MoviesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B849CD24CCBC160093AECF /* MoviesVC.xib */; };
 		F4B849D324CCBCA50093AECF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B849D224CCBCA50093AECF /* BaseViewController.swift */; };
 		F4B849E024CCC0870093AECF /* Localizable+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B849DF24CCC0860093AECF /* Localizable+String.swift */; };
-		F4B849E524CCC13F0093AECF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4B849E724CCC13F0093AECF /* Localizable.strings */; };
 		F4B849EB24CCC2B70093AECF /* MoviesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B849E924CCC2B70093AECF /* MoviesTableViewCell.swift */; };
 		F4B849EC24CCC2B70093AECF /* MoviesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B849EA24CCC2B70093AECF /* MoviesTableViewCell.xib */; };
 		F4B849F424CCC4CD0093AECF /* MovieDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B849F224CCC4CD0093AECF /* MovieDetailVC.swift */; };
@@ -62,6 +62,8 @@
 		20780E71D3631E8951F03C1B /* Pods_MovieAppEnq.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieAppEnq.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21AF143FFFAED597141FCD78 /* Pods-MovieAppEnq.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieAppEnq.release.xcconfig"; path = "Target Support Files/Pods-MovieAppEnq/Pods-MovieAppEnq.release.xcconfig"; sourceTree = "<group>"; };
 		7B37C5FA605AAB11DEEDDFFB /* Pods-MovieAppEnq.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieAppEnq.debug.xcconfig"; path = "Target Support Files/Pods-MovieAppEnq/Pods-MovieAppEnq.debug.xcconfig"; sourceTree = "<group>"; };
+		F41BAE3524D017540020045B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F41BAE3924D017B20020045B /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F48AE7AA24CE3CA600572A1E /* night_movie.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = night_movie.svg; sourceTree = "<group>"; };
 		F48AE7AC24CEBAA300572A1E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F48AE7B024CECC1800572A1E /* MovieRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRepository.swift; sourceTree = "<group>"; };
@@ -77,8 +79,6 @@
 		F4B849D224CCBCA50093AECF /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		F4B849D624CCBF560093AECF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F4B849DF24CCC0860093AECF /* Localizable+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Localizable+String.swift"; sourceTree = "<group>"; };
-		F4B849E624CCC13F0093AECF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		F4B849E824CCC1760093AECF /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F4B849E924CCC2B70093AECF /* MoviesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesTableViewCell.swift; sourceTree = "<group>"; };
 		F4B849EA24CCC2B70093AECF /* MoviesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoviesTableViewCell.xib; sourceTree = "<group>"; };
 		F4B849F224CCC4CD0093AECF /* MovieDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailVC.swift; sourceTree = "<group>"; };
@@ -250,7 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				F4B849DF24CCC0860093AECF /* Localizable+String.swift */,
-				F4B849E724CCC13F0093AECF /* Localizable.strings */,
+				F41BAE3624D017540020045B /* Localizable.strings */,
 			);
 			path = Localizable;
 			sourceTree = "<group>";
@@ -503,6 +503,7 @@
 		F4B849A624CCB9DC0093AECF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1160;
 				LastUpgradeCheck = 1160;
 				ORGANIZATIONNAME = Birbay;
@@ -536,6 +537,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F41BAE3424D017540020045B /* Localizable.strings in Resources */,
 				F4B849F524CCC4CD0093AECF /* MovieDetailVC.xib in Resources */,
 				F4B849BE24CCB9DD0093AECF /* LaunchScreen.storyboard in Resources */,
 				F4B84A4524CD722A0093AECF /* no_movie.svg in Resources */,
@@ -547,7 +549,6 @@
 				F4B849EC24CCC2B70093AECF /* MoviesTableViewCell.xib in Resources */,
 				F4B84A5024CD90840093AECF /* IMDBWebViewVC.xib in Resources */,
 				F48AE7AD24CEBAA300572A1E /* GoogleService-Info.plist in Resources */,
-				F4B849E524CCC13F0093AECF /* Localizable.strings in Resources */,
 				F4B84A0A24CCD4120093AECF /* GenresTableViewCell.xib in Resources */,
 				F4B849CF24CCBC160093AECF /* MoviesVC.xib in Resources */,
 				F4B84A1424CCD98A0093AECF /* imdb.svg in Resources */,
@@ -641,22 +642,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		F41BAE3624D017540020045B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F41BAE3524D017540020045B /* en */,
+				F41BAE3924D017B20020045B /* tr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		F4B849BC24CCB9DD0093AECF /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				F4B849D624CCBF560093AECF /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		F4B849E724CCC13F0093AECF /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F4B849E624CCC13F0093AECF /* en */,
-				F4B849E824CCC1760093AECF /* tr */,
-			);
-			name = Localizable.strings;
-			path = ../../../..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

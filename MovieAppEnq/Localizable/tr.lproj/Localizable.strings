@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  MovieAppEnq
+
+  Created by Birbay on 28.07.2020.
+  Copyright © 2020 Birbay. All rights reserved.
+*/
+"movies" = "Filmler";
+"upcomingMovies" = "Yaklaşan Filmler";
+"similarMovies" = "Benzer Filmler";
+"search" = "Ara..";
+"warning" = "Uyarı";
+"error" = "Hata";
+"ok" = "Tamam";
+"parse_error" = "Veri Ayrıştırma Hatası";
+"internet_connection" = "İnternet bağlantınızı kontrol edin!";
+"emptyTableView" = "Gösterilecek veri yok";
